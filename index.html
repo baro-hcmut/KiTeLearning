@@ -205,8 +205,8 @@
             to { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 99, 235, 0); }
         }
 
-        /* 14. Nền "AURORA" cho HERO */
-        .aurora-hero-bg {
+        /* 14. NỀN "AURORA" CHO TẤT CẢ SECTION */
+        .aurora-hero-bg { /* Nền xám nhạt (cho #home, #documents, #community, #testimonials) */
             position: relative;
             background-color: #F4F7FA; /* Fallback */
             background-image: 
@@ -216,6 +216,18 @@
             background-size: 200% 200%;
             animation: aurora-flow 16s linear infinite;
         }
+        
+        .aurora-white-bg { /* Nền trắng (cho #features, #courses, #roadmap) */
+            position: relative;
+            background-color: #FFFFFF; /* Fallback */
+            background-image: 
+                radial-gradient(at 10% 90%, hsla(222, 83%, 58%, 0.08) 0px, transparent 50%),
+                radial-gradient(at 80% 20%, hsla(38, 95%, 54%, 0.07) 0px, transparent 50%),
+                radial-gradient(at 20% 10%, hsla(339, 81%, 50%, 0.08) 0px, transparent 50%);
+            background-size: 200% 200%;
+            animation: aurora-flow 20s linear infinite; /* Chậm hơn 1 chút */
+        }
+        
         @keyframes aurora-flow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -448,6 +460,7 @@
     <main>
 
         <!-- ===== 1. HERO SECTION ===== -->
+        <!-- NỀN NHẤT QUÁN: Đã có aurora-hero-bg -->
         <section id="home" class="pt-40 pb-20 md:pt-48 md:pb-28 aurora-hero-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -502,7 +515,8 @@
         </section>
 
         <!-- ===== 2. BA TRỤ CỘT CỐT LÕI ===== -->
-        <section id="features" class="py-28 bg-white">
+        <!-- NỀN NHẤT QUÁN: Thêm aurora-white-bg -->
+        <section id="features" class="py-28 bg-white aurora-white-bg">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20 max-w-3xl mx-auto fade-in">
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Một Nền Tảng, Mọi Nhu Cầu</h2>
@@ -540,7 +554,8 @@
         </section>
 
         <!-- ===== 3. KHO TÀI LIỆU ===== -->
-        <section id="documents" class="py-28 bg-brand-bg-alt">
+        <!-- NỀN NHẤT QUÁN: Đổi bg-brand-bg-alt -> aurora-hero-bg -->
+        <section id="documents" class="py-28 aurora-hero-bg">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 fade-in">
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Kho Tài Liệu Học Thuật</h2>
@@ -591,7 +606,8 @@
         </section>
 
         <!-- ===== 4. KHÓA HỌC ===== -->
-        <section id="courses" class="py-28 bg-white">
+        <!-- NỀN NHẤT QUÁN: Thêm aurora-white-bg -->
+        <section id="courses" class="py-28 bg-white aurora-white-bg">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 fade-in">
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Khóa Học Chuyên Sâu & Kỹ Năng</h2>
@@ -724,7 +740,8 @@
         </section>
 
         <!-- ===== 5. CỘNG ĐỒNG & MENTORS ===== -->
-        <section id="community" class="py-28 bg-brand-bg-alt overflow-hidden">
+        <!-- NỀN NHẤT QUÁN: Đổi bg-brand-bg-alt -> aurora-hero-bg -->
+        <section id="community" class="py-28 aurora-hero-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                     
@@ -775,8 +792,8 @@
         </section>
 
         <!-- ===== 6. LỘ TRÌNH ===== -->
-        <!-- NÂNG CẤP LỘ TRÌNH: Thay đổi toàn bộ cấu trúc HTML và CSS -->
-        <section id="roadmap" class="py-28 bg-white overflow-hidden">
+        <!-- NỀN NHẤT QUÁN: Thêm aurora-white-bg -->
+        <section id="roadmap" class="py-28 bg-white aurora-white-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-24 fade-in"> <!-- Tăng mb -->
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Lộ Trình Học Tập Đơn Giản</h2>
@@ -822,7 +839,8 @@
         <!-- KẾT THÚC NÂNG CẤP LỘ TRÌNH -->
 
         <!-- ===== 7. TESTIMONIALS ===== -->
-        <section id="testimonials" class="py-28 bg-brand-bg-alt">
+        <!-- NỀN NHẤT QUÁN: Đổi bg-brand-bg-alt -> aurora-hero-bg -->
+        <section id="testimonials" class="py-28 aurora-hero-bg">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                 <div class="text-center mb-12 fade-in">
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Sinh Viên Nói Gì Về Chúng Tôi?</h2>
