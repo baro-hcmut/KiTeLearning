@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CẬP NHẬT TITLE V23 -->
-    <title>KITE LEARNING - Trao tri thức, Nâng tầm tương lai (v23)</title>
+    <!-- CẬP NHẬT TITLE v27 -->
+    <title>KITE LEARNING - Nền Tảng Tri Thức (v27)</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -101,8 +101,7 @@
         .close-button:focus { color: #18181B; }
 
         /* 4. Testimonial Slider */
-        .testimonial-item { display: none; animation: fadeIn 0.5s; }
-        .testimonial-item.active { display: block; }
+        /* XÓA BỎ (v26): Toàn bộ .testimonial-item slider CSS */
 
         /* 5. Hiệu ứng Fade-in khi cuộn */
         .fade-in {
@@ -131,8 +130,9 @@
             transform: scale(1.05);
         }
         
-        /* 8. Lộ trình (v12: Zig-Zag chuyên nghiệp) */
-        /* (Giữ nguyên CSS .roadmap-timeline từ v12) */
+        /* 8. XÓA BỎ (v27): TOÀN BỘ CSS LỘ TRÌNH DỌC (v12, v26) */
+        /* Gỡ bỏ .roadmap-timeline::before, .roadmap-item, .roadmap-dot, .roadmap-content, v.v. */
+
 
         /* 9. Nút dự phòng */
         .force-bg-primary { background-color: #2563EB !important; }
@@ -253,7 +253,6 @@
             box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1), 0 0 0 0 rgba(37, 99, 235, 0.1);
             backdrop-filter: blur(4px);
             
-            /* === CẢI TIẾN v19: Thêm kiểu cho Icon === */
             font-size: 2.5rem; /* Kích thước Icon (40px) */
             color: #2563EB; /* Màu Icon (brand-primary) */
 
@@ -264,7 +263,7 @@
         }
         .knowledge-node:hover,
         .knowledge-node:focus {
-            transform: scale(1.15) !important; /* !important để ghi đè animation */
+            transform: scale(1.15) !important; 
             box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2), 0 0 0 10px rgba(37, 99, 235, 0.05);
             background-color: #FFFFFF;
             z-index: 10;
@@ -302,7 +301,7 @@
             50% { transform: translate(5px, -10px); }
             100% { transform: translate(0px, 0px); }
         }
-        /* Kết thúc CSS v19 */
+        /* ===== KẾT THÚC CSS v19 ===== */
 
 
         /* 16. SIÊU CẢI TIẾN: "MAGIC LINE" NAV */
@@ -321,96 +320,31 @@
         #main-nav:hover #nav-magic-line {
             opacity: 1;
         }
-
-        /* 17. TỐI ƯU HÓA: Gỡ bỏ Parallax */
         
-        /* 18. NÂNG CẤP LỘ TRÌNH (ROADMAP) */
-        .roadmap-timeline::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 3px;
-            background-color: #DBEAFE; /* brand-primary-light */
-            transform: translateX(-50%);
-            border-radius: 99px;
-        }
-        .roadmap-item {
+        /* 18. CẢI TIẾN (v27): CSS LỘ TRÌNH NGANG */
+        .roadmap-grid {
             position: relative;
-            margin-bottom: 3rem;
         }
-        .roadmap-dot {
-            position: absolute;
-            top: 1.25rem;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            border-radius: 99px;
-            background-color: #FFFFFF;
-            border: 4px solid #DBEAFE;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.125rem;
-            color: #2563EB;
-            z-index: 10;
-        }
-        .roadmap-content {
+        .roadmap-step-card {
             position: relative;
-            padding: 2rem;
-            width: 100%;
         }
-        
+        /* Mũi tên kết nối (chỉ cho desktop) */
         @media (min-width: 768px) {
-            .roadmap-content {
-                width: calc(50% - 2.5rem); /* 2.5rem = 40px */
-            }
-            .roadmap-item:nth-child(odd) .roadmap-content {
-                margin-left: 0;
-                text-align: right;
-            }
-            .roadmap-item:nth-child(even) .roadmap-content {
-                margin-left: calc(50% + 2.5rem);
-                text-align: left;
-            }
-            
-            .roadmap-content::after {
-                content: '';
+            .roadmap-step-card:not(:last-child)::after {
+                content: "\f061"; /* fa-arrow-right */
+                font-family: "Font Awesome 6 Free";
+                font-weight: 900;
                 position: absolute;
-                top: 1.25rem;
-                width: 0;
-                height: 0;
-                border-style: solid;
-            }
-            .roadmap-item:nth-child(odd) .roadmap-content::after {
-                right: -14px;
-                border-width: 8px 0 8px 14px;
-                border-color: transparent transparent transparent #FFFFFF;
-                filter: drop-shadow(1px 0px 0px #F1F5F9);
-            }
-            .roadmap-item:nth-child(even) .roadmap-content::after {
-                left: -14px;
-                border-width: 8px 14px 8px 0;
-                border-color: transparent #FFFFFF transparent transparent;
-                filter: drop-shadow(-1px 0px 0px #F1F5F9);
+                top: 50%;
+                right: -1rem; /* Nằm giữa 2 card (gap-8 là 2rem) */
+                transform: translateY(-50%);
+                font-size: 1.5rem;
+                color: #DBEAFE; /* brand-primary-light */
+                z-index: -1;
             }
         }
-         @media (max-width: 767px) {
-            .roadmap-timeline::before {
-                left: 30px;
-            }
-            .roadmap-dot {
-                left: 30px;
-            }
-            .roadmap-content {
-                width: 100%;
-                padding-left: 5.5rem;
-                text-align: left !important;
-            }
-        }
+        /* ===== KẾT THÚC CSS (v27) ===== */
+        
 
         /* ===== MỚI (v13): CSS CHO TÍNH NĂNG MỚI ===== */
         
@@ -491,8 +425,7 @@
         .community-tab-content.active {
             display: block;
         }
-        /* ===== KẾT THÚC CSS (v22) ===== */
-
+        
     </style>
     
     <link rel="icon" href="https://placehold.co/32x32/2563EB/FFFFFF?text=KITE" type="image/png">
@@ -551,11 +484,11 @@
     <main>
 
         <!-- ===== 1. HERO SECTION ===== -->
-        <section id="home" class="pt-40 pb-20 md:pt-48 md:pb-28 aurora-hero-bg overflow-hidden">
+        <section id="home" class="pt-40 md:pt-48 aurora-hero-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     
-                    <div class="text-center lg:text-left fade-in relative z-10">
+                    <div class="text-center lg:text-left fade-in relative z-10 pb-20 md:pb-28">
                         <h1 class="text-5xl md:text-7xl font-extrabold text-brand-text font-display leading-tight">
                             Trao tri thức - Nâng tầm tương lai
                         </h1>
@@ -575,12 +508,15 @@
                     </div>
                     
                     <!-- CẢI TIẾN (v19): Biểu đồ Tri Thức (ICON) -->
-                    <div id="knowledge-graph-container" class="fade-in" style="transition-delay: 200ms;">
+                    <div id="knowledge-graph-container" class="fade-in -mt-20 md:-mt-28" style="transition-delay: 200ms;">
                         <!-- Các nút tri thức (icon) sẽ được JS chèn vào đây -->
                     </div>
 
                 </div>
             </div>
+            
+            <!-- XÓA BỎ (v26): Toàn bộ khối .hero-ticker đã bị gỡ bỏ -->
+            
         </section>
 
         <!-- ===== 2. BA TRỤ CỘT CỐT LÕI (KHÔI PHỤC v23) ===== -->
@@ -601,8 +537,9 @@
                     </div>
                     
                     <div class="text-center p-8 md:p-10 fade-in upgraded-card bg-white" style="transition-delay: 200ms;">
+                        <!-- CẢI TIẾN (v25): Đổi icon "thực chiến" -->
                         <div class="feature-icon flex-shrink-0 w-20 h-20 bg-gradient-to-br from-amber-500 to-amber-300 text-white rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-amber-500/20" style="animation-delay: -1s;">
-                            <span class="fa-solid fa-laptop-code text-4xl" aria-hidden="true"></span>
+                            <span class="fa-solid fa-chart-line text-4xl" aria-hidden="true"></span>
                         </div>
                         <h3 class="text-2xl font-bold font-display mt-6 mb-3 text-brand-text">Học Tập Thực Chiến</h3>
                         <p class="text-brand-text-light leading-relaxed">Các khóa microlearning và kỹ năng mềm (Excel, thuyết trình) giúp bạn "ứng dụng ngay".</p>
@@ -673,7 +610,7 @@
             </div>
         </section>
 
-        <!-- ===== 5. CỘNG ĐỒNG & MENTORS (CẢI TIẾN LỚN v22) ===== -->
+        <!-- ===== 5. CỘNG ĐỒNG & MENTORS (CẢI TIẾN LỚN v22 + v24) ===== -->
         <section id="community" class="py-28 aurora-hero-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 
@@ -811,15 +748,12 @@
                             </div>
                         </div>
 
-                        <!-- Tab 3: Sự kiện & Workshop -->
+                        <!-- Tab 3: Sự kiện & Workshop (CẢI TIẾN v24) -->
                         <div id="tab-events" role="tabpanel" class="community-tab-content">
                             <h3 class="text-2xl font-bold font-display text-brand-text mb-6">Sự kiện & Workshop Sắp tới</h3>
-                            <!-- CẢI TIẾN (v24): Bỏ space-y-6, dùng border-b -->
                             <div class="space-y-0">
                                 <!-- Event 1 -->
-                                <!-- CẢI TIẾN (v24): Bỏ khối ngày tháng, đổi layout, bỏ bg-brand-bg-alt, thêm border-b -->
                                 <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 border-b border-slate-100">
-                                    <!-- Bỏ khối ngày tháng -->
                                     <div class="flex-1 text-center sm:text-left">
                                         <h4 class="text-xl font-bold font-display">Workshop: Excel for Data Analysis</h4>
                                         <p class="text-brand-text-light mt-1"><span class="fa-solid fa-clock mr-2"></span> 18:00 - 20:00 | Online qua Zoom</p>
@@ -829,9 +763,7 @@
                                     </a>
                                 </div>
                                 <!-- Event 2 -->
-                                <!-- CẢI TIẾN (v24): Bỏ khối ngày tháng, đổi layout, bỏ bg-brand-bg-alt -->
                                 <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-6">
-                                    <!-- Bỏ khối ngày tháng -->
                                     <div class="flex-1 text-center sm:text-left">
                                         <h4 class="text-xl font-bold font-display">Talkshow: Con đường trở thành Auditor</h4>
                                         <p class="text-brand-text-light mt-1"><span class="fa-solid fa-map-marker-alt mr-2"></span> Hội trường A, ĐH Kinh tế</p>
@@ -850,92 +782,91 @@
         <!-- ===== KẾT THÚC CẢI TIẾN (v22) ===== -->
 
 
-        <!-- ===== 6. LỘ TRỊNH ===== -->
+        <!-- ===== 6. LỘ TRÌNH (CẢI TIẾN LỚN v27) ===== -->
         <section id="roadmap" class="py-28 bg-white aurora-white-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-24 fade-in">
+                <div class="text-center mb-20 fade-in"> <!-- Tăng mb -->
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Lộ Trình Học Tập Đơn Giản</h2>
                     <p class="mt-5 text-xl text-brand-text-light leading-relaxed">Chỉ với 3 bước để chinh phục tri thức.</p>
                 </div>
                 
-                <div class="roadmap-timeline relative max-w-4xl mx-auto">
+                <!-- Cấu trúc Grid ngang mới -->
+                <div class="roadmap-grid grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 max-w-5xl mx-auto">
                     
-                    <!-- Bước 1: Trái -->
-                    <div class="roadmap-item fade-in">
-                        <div class="roadmap-dot" style="color: #2563EB; border-color: #DBEAFE;">01</div>
-                        <div class="roadmap-content upgraded-card bg-white">
-                            <span class="font-bold text-brand-primary text-lg">BƯỚC 01</span>
-                            <h3 class="text-3xl font-extrabold font-display mt-2 mb-4">Tìm kiếm</h3>
-                            <p class="text-brand-text-light leading-relaxed text-lg">Tìm kiếm tài liệu theo môn học hoặc khóa học kỹ năng bạn cần. Toàn bộ đã được chúng tôi phân loại và kiểm duyệt sẵn.</p>
+                    <!-- Bước 1 -->
+                    <div class="roadmap-step-card text-center p-8 fade-in upgraded-card bg-white">
+                        <div class="feature-icon flex-shrink-0 w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-300 text-white rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-blue-500/20">
+                            <span class="fa-solid fa-search text-4xl" aria-hidden="true"></span>
                         </div>
+                        <h3 class="text-2xl font-bold font-display mt-6 mb-3 text-brand-text">Bước 1: Tìm kiếm</h3>
+                        <p class="text-brand-text-light leading-relaxed">Tìm kiếm tài liệu theo môn học hoặc khóa học kỹ năng bạn cần.</p>
                     </div>
                     
-                    <!-- Bước 2: Phải -->
-                    <div class="roadmap-item fade-in">
-                        <div class="roadmap-dot" style="color: #B45309; border-color: #FEF3C7;">02</div>
-                        <div class="roadmap-content upgraded-card bg-white">
-                             <span class="font-bold text-brand-secondary text-lg">BƯỚC 02</span>
-                            <h3 class="text-3xl font-extrabold font-display mt-2 mb-4">Tham gia</h3>
-                            <p class="text-brand-text-light leading-relaxed text-lg">Học ngay với các video microlearning hoặc tải tài liệu đã được kiểm duyệt. Bạn có thể học mọi lúc, mọi nơi.</p>
+                    <!-- Bước 2 -->
+                    <div class="roadmap-step-card text-center p-8 fade-in upgraded-card bg-white" style="transition-delay: 200ms;">
+                        <div class="feature-icon flex-shrink-0 w-20 h-20 bg-gradient-to-br from-amber-500 to-amber-300 text-white rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-amber-500/20" style="animation-delay: -1s;">
+                            <span class="fa-solid fa-play text-4xl" aria-hidden="true"></span>
                         </div>
+                        <h3 class="text-2xl font-bold font-display mt-6 mb-3 text-brand-text">Bước 2: Tham gia</h3>
+                        <p class="text-brand-text-light leading-relaxed">Học ngay với các video microlearning hoặc tải tài liệu đã được kiểm duyệt.</p>
                     </div>
                     
-                    <!-- Bước 3: Trái -->
-                     <div class="roadmap-item fade-in">
-                        <div class="roadmap-dot" style="color: #BE123C; border-color: #FFE4E6;">03</div>
-                        <div class="roadmap-content upgraded-card bg-white">
-                            <span class="font-bold text-brand-accent text-lg">BƯỚC 03</span>
-                            <h3 class="text-3xl font-extrabold font-display mt-2 mb-4">Kết nối</h3>
-                            <p class="text-brand-text-light leading-relaxed text-lg">Đặt câu hỏi trên diễn đàn và nhận hỗ trợ từ cộng đồng. Bạn không bao giờ học một mình tại KITE LEARNING.</p>
+                    <!-- Bước 3 -->
+                     <div class="roadmap-step-card text-center p-8 fade-in upgraded-card bg-white" style="transition-delay: 400ms;">
+                        <div class="feature-icon flex-shrink-0 w-20 h-20 bg-gradient-to-br from-rose-500 to-rose-300 text-white rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-rose-500/20" style="animation-delay: -2s;">
+                            <span class="fa-solid fa-comments text-4xl" aria-hidden="true"></span>
                         </div>
+                        <h3 class="text-2xl font-bold font-display mt-6 mb-3 text-brand-text">Bước 3: Kết nối</h3>
+                        <p class="text-brand-text-light leading-relaxed">Đặt câu hỏi trên diễn đàn và nhận hỗ trợ từ cộng đồng.</p>
                     </div>
 
                 </div>
             </div>
         </section>
+        <!-- ===== KẾT THÚC CẢI TIẾN (v27) ===== -->
 
-        <!-- ===== 7. TESTIMONIALS (KHÔI PHỤC v15) ===== -->
+        <!-- ===== 7. TESTIMONIALS (CẢI TIẾN LỚN v27) ===== -->
         <section id="testimonials" class="py-28 aurora-hero-bg">
-            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-                <div class="text-center mb-12 fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl"> 
+                <div class="text-center mb-16 fade-in"> 
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Sinh Viên Nói Gì Về Chúng Tôi?</h2>
                 </div>
                 
-                <div class="relative bg-white rounded-3xl p-8 md:p-16 fade-in shadow-xl border border-slate-100">
-                    <span class="fa-solid fa-quote-left text-8xl text-slate-100/70 absolute top-8 left-10 z-0" aria-hidden="true"></span>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     
-                    <div class="relative z-10">
-                        <!-- Testimonial 1 -->
-                        <div class="testimonial-item active">
-                            <blockquote class="text-2xl font-medium text-center text-brand-text leading-relaxed">
-                                "KITE LEARNING đã thay đổi cách mình học. Tài liệu được sắp xếp rõ ràng, không còn phải xin xỏ khắp nơi. Các khóa học kỹ năng Excel rất thực tế, giúp mình tự tin hơn khi làm báo cáo."
-                            </blockquote>
-                            <div class="text-center mt-8">
-                                <img src="https://placehold.co/80x80/ffffff/4E443F?text=SV" alt="Ảnh đại diện sinh viên Nguyễn Thị Thúy Hằng" class="w-20 h-20 rounded-full mx-auto mb-3 border-4 border-white shadow-lg">
-                                <h5 class="text-lg font-bold font-display">Nguyễn Thị Thúy Hằng</h5>
-                                <p class="text-brand-primary font-medium">Sinh viên K50 - Khoa Kinh tế</p>
-                            </div>
+                    <!-- Testimonial 1 (Card mới) -->
+                    <div class="testimonial-item upgraded-card bg-white p-10 text-center fade-in">
+                        <img src="https://placehold.co/100x100/ffffff/4E443F?text=SV" alt="Ảnh đại diện sinh viên Nguyễn Thị Thúy Hằng" class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-brand-primary-light shadow-lg">
+                        <blockquote class="text-xl font-medium text-brand-text leading-relaxed italic">
+                            "KITE LEARNING đã thay đổi cách mình học. Tài liệu được sắp xếp rõ ràng... Các khóa học kỹ năng Excel rất thực tế, giúp mình tự tin hơn khi làm báo cáo."
+                        </blockquote>
+                        <div class="mt-6">
+                            <h5 class="text-lg font-bold font-display">Nguyễn Thị Thúy Hằng</h5>
+                            <p class="text-brand-primary font-medium">Sinh viên K50 - Khoa Kinh tế</p>
                         </div>
-                        <!-- Testimonial 2 -->
-                        <div class="testimonial-item">
-                            <blockquote class="text-2xl font-medium text-center text-brand-text leading-relaxed">
-                                "Mình rất thích tính năng cộng đồng và các workshop. Nhờ có mentor hướng dẫn, mình đã biết cách làm một bài luận nghiên cứu khoa học chuẩn chỉnh. Rất khuyến khích các bạn tham gia!"
-                            </blockquote>
-                            <div class="text-center mt-8">
-                                <img src="https://placehold.co/80x80/ffffff/4E443F?text=SV" alt="Ảnh đại diện sinh viên Đặng Thảo Vi" class="w-20 h-20 rounded-full mx-auto mb-3 border-4 border-white shadow-lg">
-                                <h5 class="text-lg font-bold font-display">Đặng Thảo Vi</h5>
-                                <p class="text-brand-secondary font-medium">Sinh viên K50 - Khoa Kinh tế</p>
-                            </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 (Card mới) -->
+                    <div class="testimonial-item upgraded-card bg-white p-10 text-center fade-in" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/100x100/ffffff/4E443F?text=SV" alt="Ảnh đại diện sinh viên Đặng Thảo Vi" class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-brand-secondary-light shadow-lg">
+                        <blockquote class="text-xl font-medium text-brand-text leading-relaxed italic">
+                            "Mình rất thích tính năng cộng đồng và các workshop. Nhờ có mentor hướng dẫn, mình đã biết cách làm một bài luận nghiên cứu khoa học chuẩn chỉnh."
+                        </blockquote>
+                        <div class="mt-6">
+                            <h5 class="text-lg font-bold font-display">Đặng Thảo Vi</h5>
+                            <p class="text-brand-secondary font-medium">Sinh viên K50 - Khoa Kinh tế</p>
                         </div>
                     </div>
 
-                    <!-- Slider Controls -->
-                    <button class="testimonial-prev absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-2xl text-slate-200 hover:text-brand-primary transition-colors" aria-label="Đánh giá trước">
-                        <span class="fa-solid fa-chevron-left" aria-hidden="true"></span>
-                    </button>
-                    <button class="testimonial-next absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-2xl text-slate-200 hover:text-brand-primary transition-colors" aria-label="Đánh giá kế tiếp">
-                        <span class="fa-solid fa-chevron-right" aria-hidden="true"></span>
-                    </button>
+                </div>
+
+                <!-- CTA (v27) -->
+                <div class="text-center mt-16 fade-in" style="transition-delay: 400ms;">
+                    <h3 class="text-2xl font-bold font-display text-brand-text max-w-xl mx-auto">Trải nghiệm các khóa học Premium và Kỹ năng mềm ngay hôm nay</h3>
+                    <p class="text-lg text-brand-text-light mt-3 mb-8">Nâng cấp kỹ năng của bạn với các khóa học thực chiến được thiết kế bởi chuyên gia.</p>
+                    <a href="#courses" class="bg-brand-primary text-white px-8 py-3.5 rounded-full font-semibold text-lg hover:bg-opacity-80 transition-all shadow-xl shadow-blue-500/20 hover:shadow-2xl transform hover:scale-105 force-bg-primary">
+                        Xem tất cả Khóa học
+                    </a>
                 </div>
             </div>
         </section>
@@ -1075,7 +1006,7 @@
     <!-- JavaScript -->
     <script>
         (function() {
-            'useS strict';
+            'use strict';
 
             // ===== CẢI TIẾN (v13): Dữ liệu động cho Trang =====
             
@@ -1253,8 +1184,8 @@
                 const documentGrid = document.getElementById('document-grid');
                 const courseGrid = document.getElementById('course-grid');
                 const documentNoResults = document.getElementById('document-no-results');
-                const documentSearchInput = document.getElementById('document-search'); // CẢI TIẾN (v16)
-                const documentsSection = document.getElementById('documents'); // CẢI TIẾN (v16)
+                const documentSearchInput = document.getElementById('document-search'); 
+                const documentsSection = document.getElementById('documents'); 
 
                 // Hàm render Kho Tài Liệu
                 function renderDocuments(docs) {
@@ -1409,8 +1340,7 @@
                 // --- 4. CẢI TIẾN (v13): Document Tab & Search Filter ---
                 const tabList = document.getElementById('document-tablist');
                 const tabButtons = document.querySelectorAll('.tab-button');
-                // const documentSearchInput = document.getElementById('document-search'); // Đã định nghĩa ở trên
-
+                
                 if (tabList && tabButtons.length > 0) {
                     tabButtons.forEach((button) => {
                         button.addEventListener('click', (e) => {
@@ -1465,39 +1395,8 @@
                 }
 
 
-                // --- 6. Testimonial Slider ---
-                const testimonials = document.querySelectorAll('.testimonial-item');
-                const prevBtn = document.querySelector('.testimonial-prev');
-                const nextBtn = document.querySelector('.testimonial-next');
-                let currentTestimonial = 0;
-                let testimonialInterval = null; 
-
-                if (testimonials.length > 0 && prevBtn && nextBtn) { 
-                    function showTestimonial(index) {
-                        testimonials.forEach((item, i) => {
-                            item.classList.remove('active');
-                            if (i === index) { item.classList.add('active'); }
-                        });
-                    }
-                    const startSlider = () => {
-                        if (!testimonialInterval) { testimonialInterval = setInterval(() => { nextBtn.click(); }, 5000); }
-                    };
-                    const stopSlider = () => { clearInterval(testimonialInterval); testimonialInterval = null; };
-                    nextBtn.addEventListener('click', () => { currentTestimonial = (currentTestimonial + 1) % testimonials.length; showTestimonial(currentTestimonial); });
-                    prevBtn.addEventListener('click', () => { currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length; showTestimonial(currentTestimonial); });
-                    startSlider(); 
-                    const testimonialSlider = document.getElementById('testimonials');
-
-                    if (testimonialSlider) { 
-                        testimonialSlider.addEventListener('mouseenter', stopSlider);
-                        testimonialSlider.addEventListener('mouseleave', startSlider);
-                    }
-                    
-                    document.addEventListener('visibilitychange', () => {
-                        if (document.visibilityState === 'hidden') { stopSlider(); } else { startSlider(); }
-                    });
-                }
-
+                // --- 6. XÓA BỎ (v26): Toàn bộ JS cho Testimonial Slider ---
+                
                 // --- 7. Smooth Scrolling ---
                 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                     anchor.addEventListener('click', function (e) {
@@ -1523,7 +1422,7 @@
                             if (entry.isIntersecting) {
                                 entry.target.classList.add('visible');
                                 observer.unobserve(entry.target);
-D                            }
+                            }
                         });
                     }, observerOptions);
                     elements.forEach(elem => { observer.observe(elem); });
@@ -1592,9 +1491,8 @@ D                            }
 
                 // --- 11. CẢI TIẾN (v19): Biểu đồ Tri Thức (ICON) ---
                 const graphContainer = document.getElementById('knowledge-graph-container');
-                if (graphContainer) { // Chỉ kiểm tra graphContainer
+                if (graphContainer) { 
                     const graphNodes = [
-                        // Cập nhật: Thêm 'icon' và 'label' để hỗ trợ tiếp cận
                         { label: 'Kinh tế Vi mô', class: 'node-1', icon: 'fa-magnifying-glass-chart' },
                         { label: 'Kế toán', class: 'node-2', icon: 'fa-book-open' },
                         { label: 'Marketing', class: 'node-3', icon: 'fa-bullhorn' },
@@ -1604,17 +1502,16 @@ D                            }
                     ];
 
                     graphNodes.forEach(nodeData => {
-                        const nodeEl = document.createElement('div'); // Dùng <div> thay vì <a>
+                        const nodeEl = document.createElement('div'); 
                         nodeEl.className = `knowledge-node ${nodeData.class}`;
                         nodeEl.setAttribute('role', 'figure');
-                        nodeEl.setAttribute('aria-label', nodeData.label); // Thêm aria-label
+                        nodeEl.setAttribute('aria-label', nodeData.label); 
 
-                        // Cập nhật: Tạo element <i> cho icon
                         const iconEl = document.createElement('i');
                         iconEl.className = `fa-solid ${nodeData.icon}`;
                         iconEl.setAttribute('aria-hidden', 'true');
                         
-                        nodeEl.appendChild(iconEl); // Thêm icon vào node
+                        nodeEl.appendChild(iconEl); 
                         graphContainer.appendChild(nodeEl);
                     });
                 }
