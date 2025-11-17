@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KITE LEARNING - Trao tri thức, Nâng tầm tương lai</title>
+    <!-- CẬP NHẬT TITLE V23 -->
+    <title>KITE LEARNING - Trao tri thức, Nâng tầm tương lai (v23)</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,24 +12,27 @@
     <!-- Font Awesome (Icons) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Google Fonts (v12: Manrope) - ĐẠI CẢI CÁCH FONT -->
+    <!-- Google Fonts (v12: Manrope) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&display=swap" rel="stylesheet">
     
+    <!-- MỚI (v13): Thư viện Fuse.js để tìm kiếm mờ -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+
     <style>
         /* Tùy chỉnh Tailwind: Font MỚI (v12), Màu sắc CAO CẤP, TƯƠNG PHẢN CAO */
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        'sans': ['Manrope', 'sans-serif'], /* Font mới: Chuyên nghiệp, Rõ nét */
+                        'sans': ['Manrope', 'sans-serif'],
                         'display': ['Manrope', 'sans-serif']
                     },
                     colors: {
                         'brand-bg': '#FFFFFF',
                         'brand-bg-alt': '#F4F7FA',
-                        'brand-text': '#1E293B', /* CŨNG LÀ bg-slate-800 */
+                        'brand-text': '#1E293B',
                         'brand-text-light': '#64748B',
                         'brand-primary': '#2563EB',
                         'brand-primary-light': '#DBEAFE',
@@ -49,7 +53,7 @@
         .header-scrolled {
             background-color: rgba(255, 255, 255, 0.95) !important;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-            border-bottom: 1px solid #F1F5F9; /* slate-100 */
+            border-bottom: 1px solid #F1F5F9;
             backdrop-filter: blur(8px);
         }
 
@@ -64,7 +68,6 @@
         .tab-button.active {
             color: #2563EB;
             border-bottom-color: #2563EB;
-            /* NÂNG CẤP ĐỒ HỌA: Thêm hiệu ứng "Glow" */
             box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25);
         }
         .tab-button:not(.active):hover {
@@ -113,11 +116,8 @@
             border-radius: 1.5rem; /* 24px */
             border: 1px solid #F1F5F9;
             box-shadow: 0 10px 25px rgba(100, 116, 139, 0.07);
-            
-            /* TỐI ƯU HÓA: Thay 3D Tilt JS bằng CSS Hover */
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-        /* TỐI ƯU HÓA: Bật lại hover CSS (thay cho JS) */
         .upgraded-card:hover {
             box-shadow: 0 20px 40px rgba(100, 116, 139, 0.12);
             transform: translateY(-8px);
@@ -132,7 +132,7 @@
         }
         
         /* 8. Lộ trình (v12: Zig-Zag chuyên nghiệp) */
-        /* CŨ: Gỡ bỏ .roadmap-step */
+        /* (Giữ nguyên CSS .roadmap-timeline từ v12) */
 
         /* 9. Nút dự phòng */
         .force-bg-primary { background-color: #2563EB !important; }
@@ -145,7 +145,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== ĐẠI CẢI TIẾN ĐỒ HỌA (MỚI) ===== */
+        /* ===== ĐẠI CẢI TIẾN ĐỒ HỌA (v12) ===== */
 
         /* 11. Modern Background Elements (Tinh chỉnh) */
         body::before {
@@ -206,9 +206,9 @@
         }
 
         /* 14. NỀN "AURORA" CHO TẤT CẢ SECTION */
-        .aurora-hero-bg { /* Nền xám nhạt (cho #home, #documents, #community, #testimonials) */
+        .aurora-hero-bg { 
             position: relative;
-            background-color: #F4F7FA; /* Fallback */
+            background-color: #F4F7FA; 
             background-image: 
                 radial-gradient(at 10% 20%, hsla(222, 83%, 58%, 0.15) 0px, transparent 50%),
                 radial-gradient(at 80% 0%, hsla(38, 95%, 54%, 0.1) 0px, transparent 50%),
@@ -217,15 +217,15 @@
             animation: aurora-flow 16s linear infinite;
         }
         
-        .aurora-white-bg { /* Nền trắng (cho #features, #courses, #roadmap) */
+        .aurora-white-bg {
             position: relative;
-            background-color: #FFFFFF; /* Fallback */
+            background-color: #FFFFFF;
             background-image: 
                 radial-gradient(at 10% 90%, hsla(222, 83%, 58%, 0.08) 0px, transparent 50%),
                 radial-gradient(at 80% 20%, hsla(38, 95%, 54%, 0.07) 0px, transparent 50%),
                 radial-gradient(at 20% 10%, hsla(339, 81%, 50%, 0.08) 0px, transparent 50%);
             background-size: 200% 200%;
-            animation: aurora-flow 20s linear infinite; /* Chậm hơn 1 chút */
+            animation: aurora-flow 20s linear infinite;
         }
         
         @keyframes aurora-flow {
@@ -234,55 +234,76 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 15. KHỐI CUBE 3D (CSS) */
-        .cube-scene {
-            perspective: 800px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 350px;
-            transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .cube {
-            width: 200px;
-            height: 200px;
+        /* ===== CẢI TIẾN v19: BIỂU ĐỒ TRI THỨC (ICON) ===== */
+        #knowledge-graph-container {
             position: relative;
-            transform-style: preserve-3d;
-            animation: spin-cube 20s infinite linear;
+            width: 100%;
+            height: 400px;
+            min-height: 350px;
         }
-        /* NÂNG CẤP ĐỒ HỌA: Tạm dừng khi hover */
-        .pause-on-hover:hover .cube {
-            animation-play-state: paused;
-            cursor: grab;
-        }
-        .cube-face {
+        .knowledge-node {
             position: absolute;
-            width: 200px;
-            height: 200px;
-            border-radius: 1.5rem;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid #F1F5F9;
-            box-shadow: 0 10px 25px rgba(100, 116, 139, 0.1);
-            backdrop-filter: blur(5px);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
-        }
-        /* Cập nhật Icon Kinh tế */
-        .face-front   { transform: rotateY(0deg) translateZ(100px); color: #2563EB; }
-        .face-back    { transform: rotateY(180deg) translateZ(100px); color: #B45309; }
-        .face-right   { transform: rotateY(90deg) translateZ(100px); color: #BE123C; }
-        .face-left    { transform: rotateY(-90deg) translateZ(100px); color: #10B981; }
-        .face-top     { transform: rotateX(90deg) translateZ(100px); color: #64748B; }
-        .face-bottom  { transform: rotateX(-90deg) translateZ(100px); color: #1E293B; }
+            text-align: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1), 0 0 0 0 rgba(37, 99, 235, 0.1);
+            backdrop-filter: blur(4px);
+            
+            /* === CẢI TIẾN v19: Thêm kiểu cho Icon === */
+            font-size: 2.5rem; /* Kích thước Icon (40px) */
+            color: #2563EB; /* Màu Icon (brand-primary) */
 
-
-        @keyframes spin-cube {
-            from { transform: rotateX(0deg) rotateY(0deg); }
-            to { transform: rotateX(360deg) rotateY(360deg); }
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            animation: pulse-node 4s infinite alternate ease-in-out,
+                         float-node 6s infinite alternate ease-in-out;
         }
+        .knowledge-node:hover,
+        .knowledge-node:focus {
+            transform: scale(1.15) !important; /* !important để ghi đè animation */
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2), 0 0 0 10px rgba(37, 99, 235, 0.05);
+            background-color: #FFFFFF;
+            z-index: 10;
+            animation-play-state: paused;
+        }
+
+        /* Kích thước và Vị trí */
+        .node-1 { width: 140px; height: 140px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5; font-size: 3.5rem; } /* Icon trung tâm lớn hơn */
+        .node-2 { width: 110px; height: 110px; top: 15%; left: 30%; animation-delay: -1s, -2s; }
+        .node-3 { width: 120px; height: 120px; top: 20%; left: 70%; animation-delay: -2s, -3s; }
+        .node-4 { width: 110px; height: 110px; top: 60%; left: 10%; animation-delay: -3s, -1s; }
+        .node-5 { width: 120px; height: 120px; top: 65%; left: 80%; animation-delay: -4s, -4s; }
+        .node-6 { width: 100px; height: 100px; top: 80%; left: 45%; animation-delay: -5s, -2s; }
+        
+        @media (max-width: 1023px) {
+            #knowledge-graph-container {
+                height: 350px;
+                transform: scale(0.9);
+            }
+        }
+         @media (max-width: 767px) {
+            #knowledge-graph-container {
+                height: 300px;
+                transform: scale(0.75);
+                margin-top: -2rem;
+            }
+        }
+
+        @keyframes pulse-node {
+            from { box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1), 0 0 0 0 rgba(37, 99, 235, 0.1); }
+            to { box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15), 0 0 0 15px rgba(37, 99, 235, 0); }
+        }
+        @keyframes float-node {
+            0% { transform: translate(0px, 0px); }
+            50% { transform: translate(5px, -10px); }
+            100% { transform: translate(0px, 0px); }
+        }
+        /* Kết thúc CSS v19 */
+
 
         /* 16. SIÊU CẢI TIẾN: "MAGIC LINE" NAV */
         .nav-link {
@@ -290,9 +311,9 @@
         }
         #nav-magic-line {
             position: absolute;
-            bottom: -10px; /* Đặt vị trí dưới link */
+            bottom: -10px;
             height: 3px;
-            background-color: #2563EB; /* brand-primary */
+            background-color: #2563EB;
             border-radius: 99px;
             opacity: 0;
             transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -301,7 +322,7 @@
             opacity: 1;
         }
 
-        /* 17. TỐI ƯU HÓA: Gỡ bỏ Parallax (vì đã comment JS) */
+        /* 17. TỐI ƯU HÓA: Gỡ bỏ Parallax */
         
         /* 18. NÂNG CẤP LỘ TRÌNH (ROADMAP) */
         .roadmap-timeline::before {
@@ -324,23 +345,22 @@
             top: 1.25rem;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px; /* Tăng kích thước */
-            height: 60px; /* Tăng kích thước */
+            width: 60px;
+            height: 60px;
             border-radius: 99px;
             background-color: #FFFFFF;
-            border: 4px solid #DBEAFE; /* brand-primary-light */
+            border: 4px solid #DBEAFE;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
             font-size: 1.125rem;
-            color: #2563EB; /* brand-primary */
+            color: #2563EB;
             z-index: 10;
         }
         .roadmap-content {
             position: relative;
             padding: 2rem;
-            /* Tính toán độ rộng, trừ 1 nửa timeline và khoảng cách 2rem */
             width: 100%;
         }
         
@@ -350,54 +370,132 @@
             }
             .roadmap-item:nth-child(odd) .roadmap-content {
                 margin-left: 0;
-                text-align: right; /* Căn phải cho nội dung bên trái */
+                text-align: right;
             }
             .roadmap-item:nth-child(even) .roadmap-content {
-                margin-left: calc(50% + 2.5rem); /* Đẩy qua phải */
+                margin-left: calc(50% + 2.5rem);
                 text-align: left;
             }
             
-            /* Thêm mũi tên */
             .roadmap-content::after {
                 content: '';
                 position: absolute;
-                top: 1.25rem; /* Căn giữa với .roadmap-dot */
+                top: 1.25rem;
                 width: 0;
                 height: 0;
                 border-style: solid;
             }
             .roadmap-item:nth-child(odd) .roadmap-content::after {
-                right: -14px; /* Chỉa mũi tên ra */
+                right: -14px;
                 border-width: 8px 0 8px 14px;
-                border-color: transparent transparent transparent #FFFFFF; /* Màu nền của card */
-                filter: drop-shadow(1px 0px 0px #F1F5F9); /* Thêm viền mỏng */
+                border-color: transparent transparent transparent #FFFFFF;
+                filter: drop-shadow(1px 0px 0px #F1F5F9);
             }
             .roadmap-item:nth-child(even) .roadmap-content::after {
-                left: -14px; /* Chỉa mũi tên ra */
+                left: -14px;
                 border-width: 8px 14px 8px 0;
-                border-color: transparent #FFFFFF transparent transparent; /* Màu nền của card */
-                filter: drop-shadow(-1px 0px 0px #F1F5F9); /* Thêm viền mỏng */
+                border-color: transparent #FFFFFF transparent transparent;
+                filter: drop-shadow(-1px 0px 0px #F1F5F9);
             }
         }
          @media (max-width: 767px) {
             .roadmap-timeline::before {
-                left: 30px; /* Đẩy timeline sang trái */
+                left: 30px;
             }
             .roadmap-dot {
-                left: 30px; /* Đẩy dot sang trái */
+                left: 30px;
             }
             .roadmap-content {
                 width: 100%;
-                padding-left: 5.5rem; /* Tạo khoảng trống với dot */
+                padding-left: 5.5rem;
                 text-align: left !important;
             }
         }
 
+        /* ===== MỚI (v13): CSS CHO TÍNH NĂNG MỚI ===== */
+        
+        /* 19. CSS Cho Form Newsletter (v13) */
+        #newsletter-form .spinner {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #newsletter-form .button-text {
+            transition: opacity 0.2s;
+        }
+        #newsletter-form.loading .spinner {
+            display: inline-block;
+        }
+        #newsletter-form.loading .button-text {
+            opacity: 0;
+        }
+        #newsletter-form.loading button[type="submit"] {
+            background-color: #9CA3AF; /* gray-400 */
+            cursor: not-allowed;
+        }
+        #newsletter-message {
+            display: none;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        #newsletter-message.success {
+            display: block;
+            color: #10B981; /* brand-emerald */
+        }
+        #newsletter-message.error {
+            display: block;
+            color: #BE123C; /* brand-accent */
+        }
+
+        /* 20. CSS Cho Cộng đồng "Sống" (v13 & v14) */
+        .flow-root li:not(:last-child)::before {
+            content: '';
+            position: absolute;
+            left: 23px; /* Căn giữa avatar (w-12/2 - 2px/2) */
+            top: 3.5rem; /* Bắt đầu bên dưới avatar */
+            bottom: 0;
+            width: 2px;
+            background-color: #F1F5F9; /* slate-100 */
+        }
+
+        /* 21. CSS Cho Document "No Results" (v13) */
+        #document-no-results.hidden {
+            display: none;
+        }
+
+        /* ===== CẢI TIẾN (v22): CSS CHO COMMUNITY HUB TABS ===== */
+        .community-tab-button {
+            padding: 0.75rem 1.5rem; /* 12px 24px */
+            font-size: 1.125rem; /* 18px */
+            font-weight: 700;
+            color: #64748B; /* brand-text-light */
+            border-radius: 99px; /* bo tròn */
+            background-color: transparent;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .community-tab-button.active {
+            color: #2563EB; /* brand-primary */
+            background-color: #DBEAFE; /* brand-primary-light */
+        }
+        .community-tab-button:not(.active):hover {
+            background-color: #F4F7FA; /* brand-bg-alt */
+            color: #1E293B; /* brand-text */
+        }
+        .community-tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .community-tab-content.active {
+            display: block;
+        }
+        /* ===== KẾT THÚC CSS (v22) ===== */
 
     </style>
     
-    <!-- MỚI: Thêm Favicon (Ví dụ) -->
-    <link rel="icon" href="kite.jpg" type="image/jpeg">
+    <link rel="icon" href="https://placehold.co/32x32/2563EB/FFFFFF?text=KITE" type="image/png">
 
 </head>
 <body class="font-sans bg-brand-bg text-brand-text antialiased">
@@ -407,27 +505,20 @@
         <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div class="flex justify-between items-center">
                 
-                <a href="#" class="flex items-center space-x-3"> <!-- NÂNG CẤP HEADER: Tăng space-x-2 -> 3 -->
-                    <!-- SỬA LỖI: Cập nhật logo -->
-                    <img src="kite.jpg" 
+                <a href="#" class="flex items-center space-x-3">
+                    <img src="https://placehold.co/180x50/2563EB/FFFFFF?text=KITE+LEARNING&font=manrope" 
                          alt="KITE LEARNING Logo" 
-                         class="h-12 md:h-14">
-                    <!-- NÂNG CẤP HEADER: Thêm tên thương hiệu để lấp đầy khoảng trống -->
-                    <span class="text-2xl font-extrabold text-brand-text tracking-tight hidden sm:inline">
-                        KITE LEARNING
-                    </span>
+                         class="h-10 md:h-12" style="height: 48px; width: auto;">
                 </a>
                 
-                <!-- SIÊU CẢI TIẾN: Thêm ID và class cho Magic Line -->
                 <div id="main-nav" class="hidden lg:flex space-x-8 items-center font-semibold relative">
                     <a href="#home" class="nav-link text-brand-text hover:text-brand-primary transition-colors">Trang chủ</a>
                     <a href="#documents" class="nav-link text-brand-text hover:text-brand-primary transition-colors">Kho Tài Liệu</a>
                     <a href="#courses" class="nav-link text-brand-text hover:text-brand-primary transition-colors">Khóa Học</a>
                     <a href="#community" class="nav-link text-brand-text hover:text-brand-primary transition-colors">Cộng Đồng</a>
                     <a href="#mentors" class="nav-link text-brand-text hover:text-brand-primary transition-colors">Mentors</a>
-                    <span id="nav-magic-line"></span> <!-- Thanh Magic Line -->
+                    <span id="nav-magic-line"></span>
 
-                    <!-- Auth Buttons (Tách ra khỏi nav-links) -->
                     <div class="flex items-center space-x-8 pl-8 ml-8 border-l border-slate-200">
                         <button id="login-btn" class="text-brand-text hover:text-brand-primary font-semibold transition-colors">Đăng nhập</button>
                         <button id="register-btn" class="bg-brand-primary text-white px-6 py-2.5 rounded-full font-bold hover:bg-opacity-80 transition-all transform hover:scale-105 shadow-lg shadow-blue-500/20 force-bg-primary">Đăng ký</button>
@@ -460,12 +551,10 @@
     <main>
 
         <!-- ===== 1. HERO SECTION ===== -->
-        <!-- NỀN NHẤT QUÁN: Đã có aurora-hero-bg -->
         <section id="home" class="pt-40 pb-20 md:pt-48 md:pb-28 aurora-hero-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     
-                    <!-- TỐI ƯU HÓA: Gỡ bỏ class .hero-text -->
                     <div class="text-center lg:text-left fade-in relative z-10">
                         <h1 class="text-5xl md:text-7xl font-extrabold text-brand-text font-display leading-tight">
                             Trao tri thức - Nâng tầm tương lai
@@ -485,37 +574,16 @@
                         </div>
                     </div>
                     
-                    <!-- TỐI ƯU HÓA: Gỡ bỏ .hero-graphic, Thêm .pause-on-hover -->
-                    <div class="fade-in cube-scene pause-on-hover" style="transition-delay: 200ms;">
-                        <div class="cube">
-                            <!-- Cập nhật Icon Kinh tế -->
-                            <div class="cube-face face-front">
-                                <span class="fa-solid fa-chart-pie" aria-hidden="true"></span>
-                            </div>
-                            <div class="cube-face face-back">
-                                <span class="fa-solid fa-landmark" aria-hidden="true"></span>
-                            </div>
-                            <div class="cube-face face-right">
-                                <span class="fa-solid fa-coins" aria-hidden="true"></span>
-                            </div>
-                            <div class="cube-face face-left">
-                                <span class="fa-solid fa-magnifying-glass-dollar" aria-hidden="true"></span>
-                            </div>
-                            <div class="cube-face face-top">
-                                <span class="fa-solid fa-globe-americas" aria-hidden="true"></span>
-                            </div>
-                            <div class="cube-face face-bottom">
-                                <span class="fa-solid fa-briefcase" aria-hidden="true"></span>
-                            </div>
-                        </div>
+                    <!-- CẢI TIẾN (v19): Biểu đồ Tri Thức (ICON) -->
+                    <div id="knowledge-graph-container" class="fade-in" style="transition-delay: 200ms;">
+                        <!-- Các nút tri thức (icon) sẽ được JS chèn vào đây -->
                     </div>
 
                 </div>
             </div>
         </section>
 
-        <!-- ===== 2. BA TRỤ CỘT CỐT LÕI ===== -->
-        <!-- NỀN NHẤT QUÁN: Thêm aurora-white-bg -->
+        <!-- ===== 2. BA TRỤ CỘT CỐT LÕI (KHÔI PHỤC v23) ===== -->
         <section id="features" class="py-28 bg-white aurora-white-bg">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-20 max-w-3xl mx-auto fade-in">
@@ -523,9 +591,7 @@
                     <p class="mt-5 text-xl text-brand-text-light leading-relaxed">KITE LEARNING giải quyết 3 vấn đề lớn nhất của sinh viên Kinh tế.</p>
                 </div>
                 
-                <!-- TỐI ƯU HÓA: Gỡ bỏ perspective (không cần cho hover CSS) -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- TỐI ƯU HÓA: Gỡ bỏ .interactive-card -->
                     <div class="text-center p-8 md:p-10 fade-in upgraded-card bg-white">
                         <div class="feature-icon flex-shrink-0 w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-300 text-white rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-blue-500/20">
                             <span class="fa-solid fa-book-atlas text-4xl" aria-hidden="true"></span>
@@ -553,13 +619,22 @@
             </div>
         </section>
 
-        <!-- ===== 3. KHO TÀI LIỆU ===== -->
-        <!-- NỀN NHẤT QUÁN: Đổi bg-brand-bg-alt -> aurora-hero-bg -->
+        <!-- ===== 3. KHO TÀI LIỆU (KHÔI PHỤC v23) ===== -->
         <section id="documents" class="py-28 aurora-hero-bg">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 fade-in">
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Kho Tài Liệu Học Thuật</h2>
                     <p class="mt-5 text-xl text-brand-text-light max-w-2xl mx-auto leading-relaxed">Tìm kiếm tài liệu theo môn học. Đã được phân loại và kiểm duyệt.</p>
+                </div>
+
+                <!-- CẢI TIẾN (v13): Thanh tìm kiếm -->
+                <div class="max-w-2xl mx-auto mb-12 fade-in">
+                    <div class="relative">
+                        <input type="search" id="document-search" 
+                               class="w-full px-6 py-4 rounded-full border border-slate-200 shadow-lg text-lg focus:outline-none focus:ring-2 focus:ring-brand-primary"
+                               placeholder="Gõ 'vĩ mô', 'đề thi', 'marketing'...">
+                        <span class="fa-solid fa-search text-brand-text-light absolute right-6 top-1/2 -translate-y-1/2 text-xl" aria-hidden="true"></span>
+                    </div>
                 </div>
                 
                 <div class="flex justify-center flex-wrap gap-4 md:gap-8 mb-12 fade-in" role="tablist" id="document-tablist">
@@ -568,45 +643,22 @@
                     <button class="tab-button py-3 px-8 text-lg rounded-lg" data-tab="chuyen-nganh">Môn Chuyên Ngành</button>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <div class="tab-content all dai-cuong upgraded-card bg-white overflow-hidden cursor-pointer document-card fade-in border-primary">
-                        <div class="p-7">
-                            <span class="fa-solid fa-magnifying-glass-chart text-4xl text-brand-primary mb-5" aria-hidden="true"></span>
-                            <h3 class="text-xl font-bold font-display mb-2">Kinh tế Vi mô</h3>
-                            <p class="text-brand-text-light text-sm mb-5 leading-relaxed">Tổng hợp giáo trình, đề thi giữa kỳ, cuối kỳ và bài tập lớn.</p>
-                            <span class="font-semibold text-brand-primary">120+ Tài liệu</span>
-                        </div>
-                    </div>
-                    <div class="tab-content all dai-cuong upgraded-card bg-white overflow-hidden cursor-pointer document-card fade-in border-secondary">
-                        <div class="p-7">
-                            <span class="fa-solid fa-chart-line text-4xl text-brand-secondary mb-5" aria-hidden="true"></span>
-                            <h3 class="text-xl font-bold font-display mb-2">Kinh tế Vĩ mô</h3>
-                            <p class="text-brand-text-light text-sm mb-5 leading-relaxed">Slide bài giảng, case study mẫu và bộ đề thi trắc nghiệm.</p>
-                            <span class="font-semibold text-brand-secondary">95+ Tài liệu</span>
-                        </div>
-                    </div>
-                    <div class="tab-content all chuyen-nganh upgraded-card bg-white overflow-hidden cursor-pointer document-card fade-in border-emerald">
-                        <div class="p-7">
-                            <span class="fa-solid fa-globe-americas text-4xl text-brand-emerald mb-5" aria-hidden="true"></span>
-                            <h3 class="text-xl font-bold font-display mb-2">Kinh tế Quốc tế</h3>
-                            <p class="text-brand-text-light text-sm mb-5 leading-relaxed">Các bài luận mẫu, báo cáo chuyên đề và tài liệu ôn tập.</p>
-                            <span class="font-semibold text-brand-emerald">70+ Tài liệu</span>
-                        </div>
-                    </div>
-                    <div class="tab-content all dai-cuong upgraded-card bg-white overflow-hidden cursor-pointer document-card fade-in border-accent">
-                        <div class="p-7">
-                            <span class="fa-solid fa-calculator text-4xl text-brand-accent mb-5" aria-hidden="true"></span>
-                            <h3 class="text-xl font-bold font-display mb-2">Toán ứng dụng</h3>
-                            <p class="text-brand-text-light text-sm mb-5 leading-relaxed">Đề cương chi tiết, bài tập tình huống và sách tham khảo.</p>
-                            <span class="font-semibold text-brand-accent">85+ Tài liệu</span>
-                        </div>
-                    </div>
+                <!-- CẢI TIẾN (v13): Grid động -->
+                <div id="document-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Nội dung tài liệu sẽ được JS chèn vào đây -->
                 </div>
+                
+                <!-- CẢI TIẾN (v13): Thông báo không có kết quả -->
+                <div id="document-no-results" class="hidden text-center py-16 fade-in">
+                    <span class="fa-solid fa-folder-open text-6xl text-brand-text-light mb-6" aria-hidden="true"></span>
+                    <h3 class="text-2xl font-bold font-display text-brand-text">Không tìm thấy tài liệu</h3>
+                    <p class="text-xl text-brand-text-light mt-2">Vui lòng thử lại với từ khóa hoặc bộ lọc khác.</p>
+                </div>
+
             </div>
         </section>
 
-        <!-- ===== 4. KHÓA HỌC ===== -->
-        <!-- NỀN NHẤT QUÁN: Thêm aurora-white-bg -->
+        <!-- ===== 4. KHÓA HỌC (KHÔI PHỤC v23) ===== -->
         <section id="courses" class="py-28 bg-white aurora-white-bg">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 fade-in">
@@ -614,174 +666,179 @@
                     <p class="mt-5 text-xl text-brand-text-light max-w-2xl mx-auto leading-relaxed">Phát triển kỹ năng thực tiễn với các khóa học microlearning và chuyên đề.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <!-- SỬA LỖI ẢNH 1: Dùng PEXELS -->
-                    <div class="course-card upgraded-card bg-white overflow-hidden fade-in glow-primary">
-                        <div class="overflow-hidden rounded-t-2xl">
-                            <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                 alt="Khóa học Excel Phân Tích Dữ Liệu" class="w-full h-48 object-cover">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-brand-primary">Kỹ Năng Thực Chiến</span>
-                                <span class="text-sm font-bold text-white bg-brand-primary px-3 py-1 rounded-full">Premium</span>
-                            </div>
-                            <h3 class="text-xl font-bold font-display mb-2 mt-1">Excel Phân Tích Dữ Liệu</h3>
-                            <p class="text-brand-text-light text-sm mb-4 leading-relaxed">Thành thạo Pivot Table, VLOOKUP và các hàm thống kê.</p>
-                            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
-                                <span class="text-xl font-bold text-brand-primary">100.000 VNĐ</span>
-                                <a href="#" class="text-brand-primary font-semibold hover:underline">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- SỬA LỖI ẢNH 2: Dùng PEXELS -->
-                    <div class="course-card upgraded-card bg-white overflow-hidden fade-in glow-secondary" style="transition-delay: 200ms;">
-                        <div class="overflow-hidden rounded-t-2xl">
-                             <img src="https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                 alt="Khóa học Ôn Thi Kinh Tế Vĩ Mô" class="w-full h-48 object-cover">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-brand-secondary">Ôn Thi Cấp Tốc</span>
-                                <span class="text-sm font-bold text-white bg-brand-secondary px-3 py-1 rounded-full">Miễn Phí</span>
-                            </div>
-                            <h3 class="text-xl font-bold font-display mb-2 mt-1">Ôn Thi Kinh Tế Vĩ Mô</h3>
-                            <p class="text-brand-text-light text-sm mb-4 leading-relaxed">Tổng hợp 10 chủ đề trọng tâm và giải đề thi mẫu.</p>
-                            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
-                                <span class="text-xl font-bold text-brand-secondary">0 VNĐ</span>
-                                <a href="#" class="text-brand-secondary font-semibold hover:underline">Học ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- SỬA LỖI ẢNH 3: Dùng PEXELS -->
-                    <div class="course-card upgraded-card bg-white overflow-hidden fade-in glow-accent" style="transition-delay: 400ms;">
-                        <div class="overflow-hidden rounded-t-2xl">
-                             <img src="https://images.pexels.com/photos/1181534/pexels-photo-1181534.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                 alt="Khóa học Nghệ Thuật Thuyết Trình" class="w-full h-48 object-cover">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-brand-accent">Kỹ Năng Mềm</span>
-                                <span class="text-sm font-bold text-white bg-brand-accent px-3 py-1 rounded-full">Premium</span>
-                            </div>
-                            <h3 class="text-xl font-bold font-display mb-2 mt-1">Nghệ Thuật Thuyết Trình</h3>
-                            <p class="text-brand-text-light text-sm mb-4 leading-relaxed">Từ thiết kế slide (Canva) đến phong thái tự tin.</p>
-                            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
-                                <span class="text-xl font-bold text-brand-accent">150.000 VNĐ</span>
-                                <a href="#" class="text-brand-accent font-semibold hover:underline">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SỬA LỖI ẢNH 4: Dùng PEXELS -->
-                    <div class="course-card upgraded-card bg-white overflow-hidden fade-in glow-emerald" style="transition-delay: 0ms;">
-                        <div class="overflow-hidden rounded-t-2xl">
-                             <img src="https://images.pexels.com/photos/209224/pexels-photo-209224.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                 alt="Khóa học Nguyên lý Kế toán" class="w-full h-48 object-cover">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-brand-emerald">Chuyên ngành Cơ sở</span>
-                                <span class="text-sm font-bold text-white bg-brand-emerald px-3 py-1 rounded-full">Miễn Phí</span>
-                            </div>
-                            <h3 class="text-xl font-bold font-display mb-2 mt-1">Nguyên lý Kế toán</h3>
-                            <p class="text-brand-text-light text-sm mb-4 leading-relaxed">Nắm vững định khoản Nợ/Có và các báo cáo tài chính cơ bản.</p>
-                            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
-                                <span class="text-xl font-bold text-brand-emerald">0 VNĐ</span>
-                                <a href="#" class="text-brand-emerald font-semibold hover:underline">Học ngay</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- SỬA LỖI ẢNH 5: Dùng PEXELS -->
-                    <div class="course-card upgraded-card bg-white overflow-hidden fade-in glow-secondary" style="transition-delay: 200ms;">
-                        <div class="overflow-hidden rounded-t-2xl">
-                             <img src="https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                 alt="Khóa học Quản trị Marketing" class="w-full h-48 object-cover">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-brand-secondary">Chuyên ngành</span>
-                                <span class="text-sm font-bold text-white bg-brand-secondary px-3 py-1 rounded-full">Premium</span>
-                            </div>
-                            <h3 class="text-xl font-bold font-display mb-2 mt-1">Quản trị Marketing</h3>
-                            <p class="text-brand-text-light text-sm mb-4 leading-relaxed">Phân tích mô hình 4P, 7P và xây dựng kế hoạch marketing.</p>
-                            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
-                                <span class="text-xl font-bold text-brand-secondary">200.000 VNĐ</span>
-                                <a href="#" class="text-brand-secondary font-semibold hover:underline">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- SỬA LỖI ẢNH 6: Dùng PEXELS -->
-                    <div class="course-card upgraded-card bg-white overflow-hidden fade-in glow-primary" style="transition-delay: 400ms;">
-                        <div class="overflow-hidden rounded-t-2xl">
-                             <img src="https://images.pexels.com/photos/5926393/pexels-photo-5926393.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" 
-                                 alt="Khóa học Viết CV & Phỏng vấn" class="w-full h-48 object-cover">
-                        </div>
-                        <div class="p-6">
-                            <div class="flex justify-between items-center mb-2">
-                                <span class="text-sm font-medium text-brand-primary">Kỹ Năng Mềm</span>
-                                <span class="text-sm font-bold text-white bg-brand-primary px-3 py-1 rounded-full">Premium</span>
-                            </div>
-                            <h3 class="text-xl font-bold font-display mb-2 mt-1">Viết CV & Phỏng vấn</h3>
-                            <p class="text-brand-text-light text-sm mb-4 leading-relaxed">Bí quyết viết CV chuẩn ATS và trả lời các câu hỏi phỏng vấn.</p>
-                            <div class="flex items-center justify-between border-t border-slate-100 pt-4">
-                                <span class="text-xl font-bold text-brand-primary">120.000 VNĐ</span>
-                                <a href="#" class="text-brand-primary font-semibold hover:underline">Xem chi tiết</a>
-                            </div>
-                        </div>
-                    </div>
+                <!-- CẢI TIẾN (v13): Grid động -->
+                <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Nội dung khóa học sẽ được JS chèn vào đây -->
                 </div>
             </div>
         </section>
 
-        <!-- ===== 5. CỘNG ĐỒNG & MENTORS ===== -->
-        <!-- NỀN NHẤT QUÁN: Đổi bg-brand-bg-alt -> aurora-hero-bg -->
+        <!-- ===== 5. CỘNG ĐỒNG & MENTORS (CẢI TIẾN LỚN v22) ===== -->
         <section id="community" class="py-28 aurora-hero-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="relative grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                
+                <!-- Tiêu đề chính của Section -->
+                <div class="text-center mb-16 fade-in">
+                    <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Trung tâm Cộng đồng KITE</h2>
+                    <p class="mt-5 text-xl text-brand-text-light max-w-2xl mx-auto leading-relaxed">Kết nối, học hỏi, và phát triển. Tất cả ở cùng một nơi.</p>
+                </div>
+
+                <!-- Card Hub Thống Nhất -->
+                <div class="max-w-5xl mx-auto bg-white upgraded-card p-6 sm:p-8 md:p-10 border-none fade-in">
                     
-                    <div class="relative z-10 fade-in lg:pr-12">
-                        <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Bạn không học một mình</h2>
-                        <p class="mt-6 text-xl text-brand-text-light leading-relaxed">Tham gia cộng đồng KITE LEARNING để kết nối, hỏi đáp và cùng nhau phát triển. Thiếu định hướng hay vướng mắc tài liệu? Đã có mạng lưới mentor và giảng viên hỗ trợ bạn.</p>
-                        
-                        <div class="mt-10 space-y-6">
-                            <div class="flex items-start gap-5">
-                                <div class="flex-shrink-0 w-14 h-14 bg-brand-secondary-light text-brand-secondary rounded-2xl flex items-center justify-center">
-                                    <span class="fa-solid fa-comments text-2xl" aria-hidden="true"></span>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold font-display">Diễn đàn Hỏi Đáp</h4>
-                                    <p class="text-brand-text-light leading-relaxed">Đặt câu hỏi về bài tập, môn học và nhận được phản hồi nhanh chóng từ cộng đồng.</p>
-                                </div>
+                    <!-- Tab Buttons -->
+                    <div id="community-tablist" role="tablist" class="flex flex-col sm:flex-row justify-center flex-wrap gap-4 md:gap-6 mb-10">
+                        <button id="btn-tab-activity" role="tab" aria-selected="true" class="community-tab-button active" data-tab="activity">
+                            <span class="fa-solid fa-bolt mr-2"></span>
+                            Hoạt động Mới nhất
+                        </button>
+                        <button id="btn-tab-mentors" role="tab" aria-selected="false" class="community-tab-button" data-tab="mentors">
+                            <span class="fa-solid fa-users mr-2"></span>
+                            Gặp gỡ Mentors
+                        </button>
+                        <button id="btn-tab-events" role="tab" aria-selected="false" class="community-tab-button" data-tab="events">
+                            <span class="fa-solid fa-calendar-star mr-2"></span>
+                            Sự kiện & Workshop
+                        </button>
+                    </div>
+
+                    <!-- Tab Content Area -->
+                    <div>
+                        <!-- Tab 1: Hoạt động Mới nhất -->
+                        <div id="tab-activity" role="tabpanel" class="community-tab-content active">
+                            <div class="flex justify-between items-center mb-6 flex-wrap gap-4">
+                                <h3 class="text-2xl font-bold font-display text-brand-text">Cộng đồng "Sống"</h3>
+                                <a href="#register-modal" id="cta-register-btn-v22" class="bg-brand-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-80 transition-all shadow-lg shadow-blue-500/20 transform hover:scale-105 force-bg-primary">
+                                    <span class="fa-solid fa-comments mr-2"></span>
+                                    Tham gia Diễn đàn
+                                </a>
                             </div>
-                            <div class="flex items-start gap-5">
-                                <div class="flex-shrink-0 w-14 h-14 bg-brand-secondary-light text-brand-secondary rounded-2xl flex items-center justify-center">
-                                    <span class="fa-solid fa-chalkboard-user text-2xl" aria-hidden="true"></span>
+                            
+                            <div class="flow-root">
+                                <ul role="list" class="-mb-6">
+                                    <!-- Hoạt động 1: Câu hỏi -->
+                                    <li class="relative pb-8">
+                                        <div class="relative flex items-start space-x-4">
+                                            <div class="relative">
+                                                <img class="flex h-12 w-12 items-center justify-center rounded-full object-cover" src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=1" alt="Avatar Hằng Nguyễn">
+                                                <span class="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-brand-primary-light">
+                                                    <span class="fa-solid fa-circle-question text-brand-primary"></span>
+                                                </span>
+                                            </div>
+                                            <div class="min-w-0 flex-1 pt-1">
+                                                <p class="text-brand-text-light text-base"><strong class="font-bold text-brand-text">Hằng Nguyễn</strong> vừa hỏi trong chủ đề <a href="#" class="font-bold text-brand-primary hover:underline">Kinh tế Vi mô</a></p>
+                                                <p class="text-lg font-semibold text-brand-text mt-1">"Mọi người ơi, ai có bài tập mẫu về lý thuyết trò chơi không ạ?"</p>
+                                                <span class="text-sm text-brand-text-light">5 phút trước</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- Hoạt động 2: Tải lên -->
+                                    <li class="relative pb-8">
+                                        <div class="relative flex items-start space-x-4">
+                                            <div class="relative">
+                                                <img class="flex h-12 w-12 items-center justify-center rounded-full object-cover" src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=1" alt="Avatar Đặng Thảo Vi">
+                                                <span class="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-brand-secondary-light">
+                                                    <span class="fa-solid fa-cloud-arrow-up text-brand-secondary"></span>
+                                                </span>
+                                            </div>
+                                            <div class="min-w-0 flex-1 pt-1">
+                                                <p class="text-brand-text-light text-base"><strong class="font-bold text-brand-text">Đặng Thảo Vi</strong> đã tải lên tài liệu mới <a href="#" class="font-bold text-brand-secondary hover:underline">Ôn thi Vĩ mô</a></p>
+                                                <p class="text-lg font-semibold text-brand-text mt-1">"Tổng hợp 50 câu trắc nghiệm Vĩ mô (có đáp án) nè mọi người."</p>
+                                                <span class="text-sm text-brand-text-light">2 giờ trước</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <!-- Hoạt động 3: Trả lời -->
+                                    <li class="relative pb-8">
+                                        <div class="relative flex items-start space-x-4">
+                                            <div class="relative">
+                                                <img class="flex h-12 w-12 items-center justify-center rounded-full object-cover" src="https://images.pexels.com/photos/837358/pexels-photo-837358.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&dpr=1" alt="Avatar Mentor Bằng">
+                                                <span class="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-brand-emerald-light">
+                                                    <span class="fa-solid fa-comment-dots text-brand-emerald"></span>
+                                                </span>
+                                            </div>
+                                            <div class="min-w-0 flex-1 pt-1">
+                                                <p class="text-brand-text-light text-base"><strong class="font-bold text-brand-text">Anh Hữu Bằng (Mentor)</strong> vừa trả lời trong chủ đề <a href="#" class="font-bold text-brand-emerald hover:underline">Định hướng Nghề nghiệp</a></p>
+                                                <p class="text-lg font-semibold text-brand-text mt-1">"Chào em, về câu hỏi giữa 'Audit' và 'Finance'..."</p>
+                                                <span class="text-sm text-brand-text-light">4 giờ trước</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Gặp gỡ Mentors -->
+                        <div id="tab-mentors" role="tabpanel" class="community-tab-content">
+                            <h3 class="text-2xl font-bold font-display text-brand-text mb-6">Mạng lưới Mentor Tiêu biểu</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Mentor 1 -->
+                                <div class="flex items-center gap-5 p-5 bg-brand-bg-alt rounded-2xl">
+                                    <img src="https://placehold.co/100x100/ffffff/4E443F?text=Mentor" alt="Ảnh Mentor Nguyễn Hữu Bằng" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg flex-shrink-0">
+                                    <div>
+                                        <h4 class="text-lg font-bold font-display">Anh Nguyễn Hữu Bằng</h4>
+                                        <p class="text-brand-primary font-medium">Cố vấn học thuật</p>
+                                        <p class="mt-1 text-brand-text-light text-sm italic">"Tri thức là con đường ngắn nhất để bay cao."</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="text-xl font-bold font-display">Workshop Chuyên Đề</h4>
-                                    <p class="text-brand-text-light leading-relaxed">Các buổi workshop online/offline về kỹ năng và định hướng nghề nghiệp.</p>
+                                <!-- Mentor 2 -->
+                                <div class="flex items-center gap-5 p-5 bg-brand-bg-alt rounded-2xl">
+                                    <img src="https://placehold.co/100x100/ffffff/4E443F?text=Mentor" alt="Ảnh Mentor Trần Bích Hà" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg flex-shrink-0">
+                                    <div>
+                                        <h4 class="text-lg font-bold font-display">Chị Trần Bích Hà</h4>
+                                        <p class="text-brand-secondary font-medium">Data Analyst @ Shopee</p>
+                                        <p class="mt-1 text-brand-text-light text-sm italic">"Đừng sợ dữ liệu, hãy để dữ liệu kể chuyện."</p>
+                                    </div>
+                                </div>
+                                <!-- Mentor 3 -->
+                                <div class="flex items-center gap-5 p-5 bg-brand-bg-alt rounded-2xl">
+                                    <img src="https://placehold.co/100x100/ffffff/4E443F?text=Mentor" alt="Ảnh Mentor Lê Anh Tuấn" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg flex-shrink-0">
+                                    <div>
+                                        <h4 class="text-lg font-bold font-display">Anh Lê Anh Tuấn</h4>
+                                        <p class="text-brand-accent font-medium">Marketing Manager @ Tiki</p>
+                                        <p class="mt-1 text-brand-text-light text-sm italic">"Hiểu insight khách hàng là chìa khóa."</p>
+                                    </div>
+                                </div>
+                                <!-- Mentor 4 -->
+                                <div class="flex items-center gap-5 p-5 bg-brand-bg-alt rounded-2xl">
+                                    <img src="https://placehold.co/100x100/ffffff/4E443F?text=Mentor" alt="Ảnh Mentor Võ Thị Yến" class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg flex-shrink-0">
+                                    <div>
+                                        <h4 class="text-lg font-bold font-display">Chị Võ Thị Yến</h4>
+                                        <p class="text-brand-emerald font-medium">Senior Auditor @ Deloitte</p>
+                                        <p class="mt-1 text-brand-text-light text-sm italic">"Cẩn trọng và tỉ mỉ trong từng con số."</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div id="mentors" class="relative lg:mt-0 mt-12 fade-in" style="transition-delay: 200ms;">
-                        <div class="absolute -top-8 -left-8 w-full h-full bg-brand-primary-light rounded-3xl transform -rotate-3 opacity-70"></div>
-                        
-                        <div class="relative z-10 bg-white rounded-3xl shadow-xl p-8 border border-slate-100">
-                            <h3 class="text-2xl font-bold text-center mb-8 font-display">Gặp gỡ Mentor Tiêu Biểu</h3>
-                            <div class="flex flex-col sm:flex-row items-center text-center sm:text-left gap-6">
-                                <img src="https://placehold.co/150x150/ffffff/4E443F?text=Mentor" alt="Ảnh đại diện Mentor Nguyễn Hữu Bằng" class="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg">
-                                <div>
-                                    <h4 class="text-xl font-bold font-display">Anh Nguyễn Hữu Bằng</h4>
-                                    <p class="text-brand-primary font-medium">Cố vấn học thuật</p>
-                                    <p class="mt-2 text-brand-text-light italic leading-relaxed">"Tri thức là con đường ngắn nhất để bay cao. KITE LEARNING chính là bệ phóng đó."</p>
+
+                        <!-- Tab 3: Sự kiện & Workshop -->
+                        <div id="tab-events" role="tabpanel" class="community-tab-content">
+                            <h3 class="text-2xl font-bold font-display text-brand-text mb-6">Sự kiện & Workshop Sắp tới</h3>
+                            <!-- CẢI TIẾN (v24): Bỏ space-y-6, dùng border-b -->
+                            <div class="space-y-0">
+                                <!-- Event 1 -->
+                                <!-- CẢI TIẾN (v24): Bỏ khối ngày tháng, đổi layout, bỏ bg-brand-bg-alt, thêm border-b -->
+                                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-6 border-b border-slate-100">
+                                    <!-- Bỏ khối ngày tháng -->
+                                    <div class="flex-1 text-center sm:text-left">
+                                        <h4 class="text-xl font-bold font-display">Workshop: Excel for Data Analysis</h4>
+                                        <p class="text-brand-text-light mt-1"><span class="fa-solid fa-clock mr-2"></span> 18:00 - 20:00 | Online qua Zoom</p>
+                                    </div>
+                                    <a href="#" class="bg-brand-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-opacity-80 transition-all shadow-lg shadow-blue-500/20 transform hover:scale-105 force-bg-primary flex-shrink-0">
+                                        Đăng ký ngay
+                                    </a>
+                                </div>
+                                <!-- Event 2 -->
+                                <!-- CẢI TIẾN (v24): Bỏ khối ngày tháng, đổi layout, bỏ bg-brand-bg-alt -->
+                                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 p-6">
+                                    <!-- Bỏ khối ngày tháng -->
+                                    <div class="flex-1 text-center sm:text-left">
+                                        <h4 class="text-xl font-bold font-display">Talkshow: Con đường trở thành Auditor</h4>
+                                        <p class="text-brand-text-light mt-1"><span class="fa-solid fa-map-marker-alt mr-2"></span> Hội trường A, ĐH Kinh tế</p>
+                                    </div>
+                                    <a href="#" class="bg-white text-brand-text px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-all shadow-md transform hover:scale-105 flex-shrink-0">
+                                        Xem chi tiết
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -790,20 +847,20 @@
                 </div>
             </div>
         </section>
+        <!-- ===== KẾT THÚC CẢI TIẾN (v22) ===== -->
 
-        <!-- ===== 6. LỘ TRÌNH ===== -->
-        <!-- NỀN NHẤT QUÁN: Thêm aurora-white-bg -->
+
+        <!-- ===== 6. LỘ TRỊNH ===== -->
         <section id="roadmap" class="py-28 bg-white aurora-white-bg overflow-hidden">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-24 fade-in"> <!-- Tăng mb -->
+                <div class="text-center mb-24 fade-in">
                     <h2 class="text-4xl md:text-5xl font-extrabold font-display text-brand-text">Lộ Trình Học Tập Đơn Giản</h2>
                     <p class="mt-5 text-xl text-brand-text-light leading-relaxed">Chỉ với 3 bước để chinh phục tri thức.</p>
                 </div>
                 
-                <!-- Cấu trúc Timeline MỚI -->
                 <div class="roadmap-timeline relative max-w-4xl mx-auto">
                     
-                    <!-- Bước 1: Trái (trên mobile là full) -->
+                    <!-- Bước 1: Trái -->
                     <div class="roadmap-item fade-in">
                         <div class="roadmap-dot" style="color: #2563EB; border-color: #DBEAFE;">01</div>
                         <div class="roadmap-content upgraded-card bg-white">
@@ -813,7 +870,7 @@
                         </div>
                     </div>
                     
-                    <!-- Bước 2: Phải (trên mobile là full) -->
+                    <!-- Bước 2: Phải -->
                     <div class="roadmap-item fade-in">
                         <div class="roadmap-dot" style="color: #B45309; border-color: #FEF3C7;">02</div>
                         <div class="roadmap-content upgraded-card bg-white">
@@ -823,7 +880,7 @@
                         </div>
                     </div>
                     
-                    <!-- Bước 3: Trái (trên mobile là full) -->
+                    <!-- Bước 3: Trái -->
                      <div class="roadmap-item fade-in">
                         <div class="roadmap-dot" style="color: #BE123C; border-color: #FFE4E6;">03</div>
                         <div class="roadmap-content upgraded-card bg-white">
@@ -836,10 +893,8 @@
                 </div>
             </div>
         </section>
-        <!-- KẾT THÚC NÂNG CẤP LỘ TRÌNH -->
 
-        <!-- ===== 7. TESTIMONIALS ===== -->
-        <!-- NỀN NHẤT QUÁN: Đổi bg-brand-bg-alt -> aurora-hero-bg -->
+        <!-- ===== 7. TESTIMONIALS (KHÔI PHỤC v15) ===== -->
         <section id="testimonials" class="py-28 aurora-hero-bg">
             <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                 <div class="text-center mb-12 fade-in">
@@ -875,10 +930,10 @@
                     </div>
 
                     <!-- Slider Controls -->
-                    <button class="testimonial-prev absolute left-4 md:left-8 top-1-2 -translate-y-1-2 text-2xl text-slate-200 hover:text-brand-primary transition-colors" aria-label="Đánh giá trước">
+                    <button class="testimonial-prev absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-2xl text-slate-200 hover:text-brand-primary transition-colors" aria-label="Đánh giá trước">
                         <span class="fa-solid fa-chevron-left" aria-hidden="true"></span>
                     </button>
-                    <button class="testimonial-next absolute right-4 md:right-8 top-1-2 -translate-y-1-2 text-2xl text-slate-200 hover:text-brand-primary transition-colors" aria-label="Đánh giá kế tiếp">
+                    <button class="testimonial-next absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-2xl text-slate-200 hover:text-brand-primary transition-colors" aria-label="Đánh giá kế tiếp">
                         <span class="fa-solid fa-chevron-right" aria-hidden="true"></span>
                     </button>
                 </div>
@@ -894,10 +949,9 @@
                 <!-- Cột 1: Giới thiệu -->
                 <div>
                     <a href="#">
-                         <!-- SỬA LỖI: Đã xóa style="filter:..." -->
-                         <img src="kite.jpg" 
+                         <img src="https://placehold.co/180x50/FFFFFF/1E293B?text=KITE+LEARNING&font=manrope" 
                               alt="KITE LEARNING Logo (Footer)" 
-                              class="h-12 mb-4">
+                              class="h-10 mb-4" style="height: 40px; width: auto;">
                     </a>
                     <p class="text-slate-300 leading-relaxed">Nền tảng tri thức mở dành cho sinh viên Trường Đại học Kinh tế - Đại học Đà Nẵng.</p>
                     <div class="flex space-x-4 mt-6">
@@ -933,11 +987,16 @@
                 <div>
                     <h6 class="text-lg font-semibold text-white mb-5 font-display">Đăng ký nhận tin</h6>
                     <p class="text-slate-300 mb-4 leading-relaxed">Nhận thông tin về khóa học mới và workshop sắp tới.</p>
-                    <form class="flex">
+                    <!-- CẢI TIẾN (v13): Thêm ID cho form và các phần tử liên quan -->
+                    <form class="flex" id="newsletter-form">
                         <label for="footer-email" class="sr-only">Email của bạn</label>
-                        <input type="email" id="footer-email" placeholder="Email của bạn" class="w-full px-4 py-2.5 rounded-l-md border-0 text-brand-text focus:outline-none focus:ring-2 focus:ring-brand-primary">
-                        <button type="submit" class="bg-brand-primary text-white px-5 py-2.5 rounded-r-md hover:bg-opacity-80 transition-colors">Gửi</button>
+                        <input type="email" id="footer-email" placeholder="Email của bạn" class="w-full px-4 py-2.5 rounded-l-md border-0 text-brand-text focus:outline-none focus:ring-2 focus:ring-brand-primary" required>
+                        <button type="submit" class="bg-brand-primary text-white px-5 py-2.5 rounded-r-md hover:bg-opacity-80 transition-colors relative">
+                            <span class="fa-solid fa-spinner animate-spin spinner"></span>
+                            <span class="button-text">Gửi</span>
+                        </button>
                     </form>
+                    <div id="newsletter-message" class="text-lg"></div>
                 </div>
             </div>
             
@@ -948,7 +1007,7 @@
     </footer>
 
     <!-- ===== MODALS ===== -->
-    <!-- (Modal HTML không thay đổi, giữ nguyên) -->
+    
     <!-- Login Modal -->
     <div id="login-modal" class="modal">
         <div class="modal-content">
@@ -996,12 +1055,18 @@
         <div class="modal-content max-w-2xl">
             <button class="close-button" id="close-document" aria-label="Đóng">&times;</button>
             <h2 id="document-title" class="text-2xl font-bold font-display text-center mb-6 text-brand-text">Chi tiết Tài liệu</h2>
-            <div id="document-body" class="font-body">
+            <!-- CẢI TIẾN (v13): Nội dung modal động -->
+            <div id="document-body">
+                <!-- Nội dung sẽ được JS chèn vào đây -->
                 <p>Đang tải thông tin chi tiết...</p>
             </div>
             <div class="flex justify-end gap-4 mt-6">
                  <button id="close-document-btn" class="bg-slate-200 text-slate-800 px-6 py-2.5 rounded-lg font-medium hover:bg-slate-300 transition-colors">Đóng</button>
-                 <button class="bg-brand-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-opacity-80 transition-colors"><span class="fa-solid fa-download mr-2" aria-hidden="true"></span> Tải về (1.2MB)</button>
+                 <!-- CẢI TIẾN (v13): Nút tải về động -->
+                 <a id="document-download-btn" href="#" class="bg-brand-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-opacity-80 transition-colors">
+                    <span class="fa-solid fa-download mr-2" aria-hidden="true"></span>
+                    <span id="document-download-text">Tải về (1.2MB)</span>
+                 </a>
             </div>
         </div>
     </div>
@@ -1010,38 +1075,295 @@
     <!-- JavaScript -->
     <script>
         (function() {
-            'use strict';
+            'useS strict';
+
+            // ===== CẢI TIẾN (v13): Dữ liệu động cho Trang =====
+            
+            // --- Dữ liệu Kho Tài Liệu ---
+            const allDocuments = [
+                { 
+                    id: 'vimo', 
+                    title: 'Kinh tế Vi mô', 
+                    description: 'Tổng hợp giáo trình, đề thi giữa kỳ, cuối kỳ và bài tập lớn.',
+                    count: '120+', 
+                    category: 'dai-cuong', 
+                    icon: 'fa-magnifying-glass-chart', 
+                    color: 'primary',
+                    files: ['Giáo trình Vi mô (PDF)', 'Đề thi K49 (có đáp án)', 'Bài tập lớn mẫu (Word)', 'Slide 10 chương (PPT)'],
+                    size: '24.5MB',
+                    tags: ['vi mô', 'đề thi', 'bài tập', 'giáo trình', 'đại cương']
+                },
+                { 
+                    id: 'vima', 
+                    title: 'Kinh tế Vĩ mô', 
+                    description: 'Slide bài giảng, case study mẫu và bộ đề thi trắc nghiệm.',
+                    count: '95+', 
+                    category: 'dai-cuong', 
+                    icon: 'fa-chart-line', 
+                    color: 'secondary',
+                    files: ['Slide bài giảng (PDF)', 'Case study mẫu', 'Bộ 200 câu trắc nghiệm (có đáp án)'],
+                    size: '18.2MB',
+                    tags: ['vĩ mô', 'trắc nghiệm', 'slide', 'case study', 'đại cương']
+                },
+                { 
+                    id: 'kttq', 
+                    title: 'Kinh tế Quốc tế', 
+                    description: 'Các bài luận mẫu, báo cáo chuyên đề và tài liệu ôn tập.',
+                    count: '70+', 
+                    category: 'chuyen-nganh', 
+                    icon: 'fa-globe-americas', 
+                    color: 'emerald',
+                    files: ['Bài luận mẫu 9 điểm', 'Báo cáo chuyên đề (PDF)', 'Tài liệu ôn tập cuối kỳ'],
+                    size: '12.0MB',
+                    tags: ['quốc tế', 'luận', 'báo cáo', 'chuyên ngành']
+                },
+                { 
+                    id: 'toan', 
+                    title: 'Toán ứng dụng', 
+                    description: 'Đề cương chi tiết, bài tập tình huống và sách tham khảo.',
+                    count: '85+', 
+                    category: 'dai-cuong', 
+                    icon: 'fa-calculator', 
+                    color: 'accent',
+                    files: ['Đề cương chi tiết (PDF)', 'Bài tập tình huống (Excel)', 'Sách tham khảo (PDF)'],
+                    size: '30.1MB',
+                    tags: ['toán', 'ứng dụng', 'tình huống', 'đề cương', 'đại cương']
+                },
+                { 
+                    id: 'marketing', 
+                    title: 'Nguyên lý Marketing', 
+                    description: 'Giáo trình, slide và các case study marketing thực tế.',
+                    count: '110+', 
+                    category: 'chuyen-nganh', 
+                    icon: 'fa-bullhorn', 
+                    color: 'primary',
+                    files: ['Giáo trình Marketing (PDF)', 'Slide 12 chương (PPT)', 'Case study Vinamilk, Bitis (Word)'],
+                    size: '45.5MB',
+                    tags: ['marketing', 'nguyên lý', 'case study', 'chuyên ngành']
+                },
+                { 
+                    id: 'ketoan', 
+                    title: 'Nguyên lý Kế toán', 
+                    description: 'Bài tập định khoản, đề thi Nợ/Có và giáo trình.',
+                    count: '130+', 
+                    category: 'chuyen-nganh', 
+                    icon: 'fa-book-open', 
+                    color: 'secondary',
+                    files: ['Giáo trình (PDF)', 'Bài tập định khoản (Excel)', 'Đề thi cuối kỳ K48, K49'],
+                    size: '22.8MB',
+                    tags: ['kế toán', 'nguyên lý', 'định khoản', 'nợ có', 'chuyên ngành']
+                }
+            ];
+
+            // --- Dữ liệu Khóa Học ---
+            const allCourses = [
+                {
+                    id: 'excel',
+                    title: 'Excel Phân Tích Dữ Liệu',
+                    description: 'Thành thạo Pivot Table, VLOOKUP và các hàm thống kê.',
+                    category: 'Kỹ Năng Thực Chiến',
+                    price: '100.000 VNĐ',
+                    priceRaw: 100000,
+                    color: 'primary',
+                    badge: 'Premium',
+                    image: 'https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+                    linkText: 'Xem chi tiết'
+                },
+                {
+                    id: 'vimo-onthi',
+                    title: 'Ôn Thi Kinh Tế Vĩ Mô',
+                    description: 'Tổng hợp 10 chủ đề trọng tâm và giải đề thi mẫu.',
+                    category: 'Ôn Thi Cấp Tốc',
+                    price: '0 VNĐ',
+                    priceRaw: 0,
+                    color: 'secondary',
+                    badge: 'Miễn Phí',
+                    image: 'https://images.pexels.com/photos/355948/pexels-photo-355948.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+                    linkText: 'Học ngay'
+                },
+                {
+                    id: 'thuyettrinh',
+                    title: 'Nghệ Thuật Thuyết Trình',
+                    description: 'Từ thiết kế slide (Canva) đến phong thái tự tin.',
+                    category: 'Kỹ Năng Mềm',
+                    price: '150.000 VNĐ',
+                    priceRaw: 150000,
+                    color: 'accent',
+                    badge: 'Premium',
+                    image: 'https://images.pexels.com/photos/1181534/pexels-photo-1181534.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+                    linkText: 'Xem chi tiết'
+                },
+                {
+                    id: 'ketoan-nl',
+                    title: 'Nguyên lý Kế toán',
+                    description: 'Nắm vững định khoản Nợ/Có và các báo cáo tài chính cơ bản.',
+                    category: 'Chuyên ngành Cơ sở',
+                    price: '0 VNĐ',
+                    priceRaw: 0,
+                    color: 'emerald',
+                    badge: 'Miễn Phí',
+                    image: 'https://images.pexels.com/photos/209224/pexels-photo-209224.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+                    linkText: 'Học ngay'
+                },
+                {
+                    id: 'marketing-qt',
+                    title: 'Quản trị Marketing',
+                    description: 'Phân tích mô hình 4P, 7P và xây dựng kế hoạch marketing.',
+                    category: 'Chuyên ngành',
+                    price: '200.000 VNĐ',
+                    priceRaw: 200000,
+                    color: 'secondary',
+                    badge: 'Premium',
+                    image: 'https://images.pexels.com/photos/3184423/pexels-photo-3184423.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+                    linkText: 'Xem chi tiết'
+                },
+                {
+                    id: 'cv',
+                    title: 'Viết CV & Phỏng vấn',
+                    description: 'Bí quyết viết CV chuẩn ATS và trả lời các câu hỏi phỏng vấn.',
+                    category: 'Kỹ Năng Mềm',
+                    price: '120.000 VNĐ',
+                    priceRaw: 120000,
+                    color: 'primary',
+                    badge: 'Premium',
+                    image: 'https://images.pexels.com/photos/5926393/pexels-photo-5926393.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1',
+                    linkText: 'Xem chi tiết'
+                }
+            ];
+            
+            // --- Khởi tạo Fuse.js ---
+            const fuseOptions = {
+                includeScore: true,
+                keys: ['title', 'description', 'tags'],
+                threshold: 0.4, // Điều chỉnh độ "mờ" của tìm kiếm
+            };
+            const documentFuse = new Fuse(allDocuments, fuseOptions);
+
+            // --- Biến trạng thái cho việc lọc ---
+            let currentDocCategory = 'all';
+            let currentSearchTerm = '';
+
+
             document.addEventListener('DOMContentLoaded', function() {
                 
-                // --- 1. Header Scroll Effect ---
                 const header = document.getElementById('main-header'); 
-                const headerHeight = header.offsetHeight; 
+                const headerHeight = header ? header.offsetHeight : 80; 
 
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 50) {
-                        header.classList.add('header-scrolled');
-                        header.classList.remove('bg-white/95');
-                    } else {
-                        header.classList.remove('header-scrolled');
-                        header.classList.add('bg-white/95');
+                // --- Định nghĩa các phần tử DOM chính ---
+                const documentGrid = document.getElementById('document-grid');
+                const courseGrid = document.getElementById('course-grid');
+                const documentNoResults = document.getElementById('document-no-results');
+                const documentSearchInput = document.getElementById('document-search'); // CẢI TIẾN (v16)
+                const documentsSection = document.getElementById('documents'); // CẢI TIẾN (v16)
+
+                // Hàm render Kho Tài Liệu
+                function renderDocuments(docs) {
+                    if (!documentGrid) return; 
+                    documentGrid.innerHTML = ''; 
+                    
+                    if (!documentNoResults) return; 
+                    
+                    if (docs.length === 0) {
+                        documentNoResults.classList.remove('hidden');
+                        return;
                     }
-                });
+                    documentNoResults.classList.add('hidden');
+                    
+                    docs.forEach(doc => {
+                        const docData = doc.item || doc; 
+                        const cardHTML = `
+                            <div class="tab-content ${docData.category} all upgraded-card bg-white overflow-hidden cursor-pointer document-card fade-in border-${docData.color}"
+                                 data-id="${docData.id}" 
+                                 role="button" 
+                                 tabindex="0">
+                                <div class="p-7">
+                                    <span class="fa-solid ${docData.icon} text-4xl text-brand-${docData.color} mb-5" aria-hidden="true"></span>
+                                    <h3 class="text-xl font-bold font-display mb-2">${docData.title}</h3>
+                                    <p class="text-brand-text-light text-sm mb-5 leading-relaxed">${docData.description}</p>
+                                    <span class="font-semibold text-brand-${docData.color}">${docData.count} Tài liệu</span>
+                                </div>
+                            </div>`;
+                        documentGrid.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                    observeFadeIn(documentGrid.querySelectorAll('.fade-in'));
+                }
+
+                // Hàm render Khóa Học
+                function renderCourses(courses) {
+                    if (!courseGrid) return; 
+                    courseGrid.innerHTML = ''; 
+                    courses.forEach((course, index) => {
+                        const delay = (index % 3) * 200; 
+                        const cardHTML = `
+                            <div class="course-card upgraded-card bg-white overflow-hidden fade-in glow-${course.color}" style="transition-delay: ${delay}ms;">
+                                <div class="overflow-hidden rounded-t-2xl">
+                                    <img src="${course.image}" alt="Ảnh bìa khóa học ${course.title}" class="w-full h-48 object-cover">
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-medium text-brand-${course.color}">${course.category}</span>
+                                        <span class="text-sm font-bold text-white bg-brand-${course.color} px-3 py-1 rounded-full">${course.badge}</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold font-display mb-2 mt-1">${course.title}</h3>
+                                    <p class="text-brand-text-light text-sm mb-4 leading-relaxed">${course.description}</p>
+                                    <div class="flex items-center justify-between border-t border-slate-100 pt-4">
+                                        <span class="text-xl font-bold text-brand-${course.color}">${course.price}</span>
+                                        <a href="#" class="text-brand-${course.color} font-semibold hover:underline">${course.linkText}</a>
+                                    </div>
+                                </div>
+                            </div>`;
+                        courseGrid.insertAdjacentHTML('beforeend', cardHTML);
+                    });
+                    observeFadeIn(courseGrid.querySelectorAll('.fade-in'));
+                }
+
+                // Hàm tổng hợp để lọc và render
+                function filterAndRenderDocuments() {
+                    let filteredDocs = allDocuments;
+
+                    // 1. Lọc bằng search (Fuse.js)
+                    if (currentSearchTerm.trim() !== '') {
+                        filteredDocs = documentFuse.search(currentSearchTerm).map(result => result.item);
+                    }
+
+                    // 2. Lọc bằng category
+                    if (currentDocCategory !== 'all') {
+                        filteredDocs = filteredDocs.filter(doc => doc.category === currentDocCategory);
+                    }
+
+                    renderDocuments(filteredDocs);
+                }
+
+                // --- 1. Header Scroll Effect ---
+                if (header) { 
+                    window.addEventListener('scroll', () => {
+                        if (window.scrollY > 50) {
+                            header.classList.add('header-scrolled');
+                            header.classList.remove('bg-white/95');
+                        } else {
+                            header.classList.remove('header-scrolled');
+                            header.classList.add('bg-white/95');
+                        }
+                    });
+                }
 
                 // --- 2. Mobile Menu Toggle ---
                 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
                 const mobileMenu = document.getElementById('mobile-menu');
-                const mobileLinks = mobileMenu.querySelectorAll('a, button');
-
-                mobileMenuBtn.addEventListener('click', () => {
-                    const isHidden = mobileMenu.classList.toggle('hidden');
-                    mobileMenuBtn.setAttribute('aria-expanded', !isHidden);
-                });
-                mobileLinks.forEach(link => {
-                    link.addEventListener('click', () => {
-                        mobileMenu.classList.add('hidden');
-                        mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                
+                if (mobileMenuBtn && mobileMenu) { 
+                    const mobileLinks = mobileMenu.querySelectorAll('a, button');
+                    mobileMenuBtn.addEventListener('click', () => {
+                        const isHidden = mobileMenu.classList.toggle('hidden');
+                        mobileMenuBtn.setAttribute('aria-expanded', !isHidden);
                     });
-                });
+                    mobileLinks.forEach(link => {
+                        link.addEventListener('click', () => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                        });
+                    });
+                }
 
                 // --- 3. Modal Handling ---
                 const loginModal = document.getElementById('login-modal');
@@ -1059,14 +1381,24 @@
                 const openModal = (modal) => modal.style.display = 'flex';
                 const closeModal = (modal) => modal.style.display = 'none';
 
-                loginBtns.forEach(btn => btn.addEventListener('click', () => openModal(loginModal)));
-                registerBtns.forEach(btn => btn.addEventListener('click', () => openModal(registerModal)));
-                closeLoginBtn.addEventListener('click', () => closeModal(loginModal));
-                closeRegisterBtn.addEventListener('click', () => closeModal(registerModal));
-                closeDocumentBtn.addEventListener('click', () => closeModal(documentModal));
-                closeDocumentBtnSecondary.addEventListener('click', () => closeModal(documentModal)); 
-                showLoginFromRegister.addEventListener('click', (e) => { e.preventDefault(); closeModal(registerModal); openModal(loginModal); });
-                showRegisterFromLogin.addEventListener('click', (e) => { e.preventDefault(); closeModal(loginModal); openModal(registerModal); });
+                loginBtns.forEach(btn => btn && btn.addEventListener('click', () => openModal(loginModal))); 
+                registerBtns.forEach(btn => btn && btn.addEventListener('click', () => openModal(registerModal))); 
+                
+                // CẢI TIẾN (v22): Cập nhật nút CTA mới
+                const ctaRegisterBtnV22 = document.getElementById('cta-register-btn-v22');
+                if (ctaRegisterBtnV22) {
+                    ctaRegisterBtnV22.addEventListener('click', (e) => {
+                        e.preventDefault(); 
+                        openModal(registerModal);
+                    });
+                }
+
+                if (closeLoginBtn) closeLoginBtn.addEventListener('click', () => closeModal(loginModal));
+                if (closeRegisterBtn) closeRegisterBtn.addEventListener('click', () => closeModal(registerModal));
+                if (closeDocumentBtn) closeDocumentBtn.addEventListener('click', () => closeModal(documentModal));
+                if (closeDocumentBtnSecondary) closeDocumentBtnSecondary.addEventListener('click', () => closeModal(documentModal)); 
+                if (showLoginFromRegister) showLoginFromRegister.addEventListener('click', (e) => { e.preventDefault(); closeModal(registerModal); openModal(loginModal); });
+                if (showRegisterFromLogin) showRegisterFromLogin.addEventListener('click', (e) => { e.preventDefault(); closeModal(loginModal); openModal(registerModal); });
 
                 window.addEventListener('click', (event) => {
                     if (event.target == loginModal) closeModal(loginModal);
@@ -1074,63 +1406,64 @@
                     if (event.target == documentModal) closeModal(documentModal);
                 });
 
-                // --- 4. Document Tab Filter ---
+                // --- 4. CẢI TIẾN (v13): Document Tab & Search Filter ---
                 const tabList = document.getElementById('document-tablist');
                 const tabButtons = document.querySelectorAll('.tab-button');
-                const tabContents = document.querySelectorAll('.tab-content');
-                let currentTabIndex = 0;
+                // const documentSearchInput = document.getElementById('document-search'); // Đã định nghĩa ở trên
 
-                if (tabList && tabButtons.length > 0 && tabContents.length > 0) {
-                    tabButtons.forEach((button, index) => {
+                if (tabList && tabButtons.length > 0) {
+                    tabButtons.forEach((button) => {
                         button.addEventListener('click', (e) => {
                             e.preventDefault();
                             tabButtons.forEach(btn => { btn.classList.remove('active'); btn.setAttribute('tabindex', '-1'); });
                             button.classList.add('active'); button.setAttribute('tabindex', '0');
-                            currentTabIndex = index; 
-                            const tabCategory = button.getAttribute('data-tab');
-                            tabContents.forEach(content => {
-                                content.classList.add('hidden'); 
-                                if (content.classList.contains(tabCategory)) { content.classList.remove('hidden'); }
-                            });
+                            
+                            currentDocCategory = button.getAttribute('data-tab'); 
+                            filterAndRenderDocuments(); 
                         });
-                        button.setAttribute('role', 'tab');
-                        if (!button.classList.contains('active')) { button.setAttribute('tabindex', '-1'); } 
-                        else { button.setAttribute('tabindex', '0'); currentTabIndex = index; }
                     });
-                    
-                    tabList.addEventListener('keydown', (e) => {
-                        let nextIndex = currentTabIndex;
-                        if (e.key === 'ArrowRight') { nextIndex = (currentTabIndex + 1) % tabButtons.length; } 
-                        else if (e.key === 'ArrowLeft') { nextIndex = (currentTabIndex - 1 + tabButtons.length) % tabButtons.length; }
-                        if (nextIndex !== currentTabIndex) { e.preventDefault(); tabButtons[nextIndex].click(); tabButtons[nextIndex].focus(); }
+                }
+                
+                if (documentSearchInput) {
+                    documentSearchInput.addEventListener('input', (e) => {
+                        currentSearchTerm = e.target.value; 
+                        filterAndRenderDocuments(); 
                     });
-
-                    const initialTab = document.querySelector('.tab-button[data-tab="all"]');
-                    if (initialTab) { initialTab.click(); }
                 }
 
-                // --- 5. Document Modal ---
-                const documentCards = document.querySelectorAll('.document-card');
+                // Khởi tạo render lần đầu
+                renderDocuments(allDocuments);
+                renderCourses(allCourses);
+
+                // --- 5. CẢI TIẾN (v13): Document Modal Động ---
                 const documentTitle = document.getElementById('document-title');
                 const documentBody = document.getElementById('document-body');
+                const documentDownloadText = document.getElementById('document-download-text');
+                const documentDownloadBtn = document.getElementById('document-download-btn');
                 
-                documentCards.forEach(card => {
-                    card.addEventListener('click', () => {
-                        const title = card.querySelector('h3').innerText;
-                        const description = card.querySelector('p').innerText;
-                        documentTitle.innerText = `Chi tiết: ${title}`;
-                        documentBody.innerHTML = `
-                            <p class="text-lg text-brand-text-light mb-4 leading-relaxed">${description}</p>
-                            <h4 class="font-semibold font-display text-lg mb-2">Bao gồm:</h4>
-                            <ul class="list-disc list-inside space-y-1 text-brand-text-light leading-relaxed">
-                                <li>Slide bài giảng (PDF)</li>
-                                <li>Đề thi giữa kỳ 3 năm gần nhất (có đáp án)</li>
-                                <li>Tổng hợp câu hỏi trắc nghiệm ôn tập</li>
-                                <li>Bài tập tình huống và case study mẫu</li>
-                            </ul>`;
-                        openModal(documentModal);
+                if (documentGrid) {
+                    documentGrid.addEventListener('click', (e) => {
+                        const card = e.target.closest('.document-card');
+                        if (!card) return;
+
+                        const docId = card.getAttribute('data-id');
+                        const docData = allDocuments.find(d => d.id === docId);
+
+                        if (docData && documentTitle && documentBody && documentDownloadText && documentDownloadBtn) { 
+                            documentTitle.innerText = `Chi tiết: ${docData.title}`;
+                            documentBody.innerHTML = `
+                                <p class="text-lg text-brand-text-light mb-4 leading-relaxed">${docData.description}</p>
+                                <h4 class="font-semibold font-display text-lg mb-2">Bao gồm:</h4>
+                                <ul class="list-disc list-inside space-y-1 text-brand-text-light leading-relaxed">
+                                    ${docData.files.map(file => `<li>${file}</li>`).join('')}
+                                </ul>`;
+                            documentDownloadText.innerText = `Tải về (${docData.size})`;
+                            documentDownloadBtn.setAttribute('href', '#'); 
+                            openModal(documentModal);
+                        }
                     });
-                });
+                }
+
 
                 // --- 6. Testimonial Slider ---
                 const testimonials = document.querySelectorAll('.testimonial-item');
@@ -1139,7 +1472,7 @@
                 let currentTestimonial = 0;
                 let testimonialInterval = null; 
 
-                if (testimonials.length > 0) { 
+                if (testimonials.length > 0 && prevBtn && nextBtn) { 
                     function showTestimonial(index) {
                         testimonials.forEach((item, i) => {
                             item.classList.remove('active');
@@ -1154,8 +1487,12 @@
                     prevBtn.addEventListener('click', () => { currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length; showTestimonial(currentTestimonial); });
                     startSlider(); 
                     const testimonialSlider = document.getElementById('testimonials');
-                    testimonialSlider.addEventListener('mouseenter', stopSlider);
-                    testimonialSlider.addEventListener('mouseleave', startSlider);
+
+                    if (testimonialSlider) { 
+                        testimonialSlider.addEventListener('mouseenter', stopSlider);
+                        testimonialSlider.addEventListener('mouseleave', startSlider);
+                    }
+                    
                     document.addEventListener('visibilitychange', () => {
                         if (document.visibilityState === 'hidden') { stopSlider(); } else { startSlider(); }
                     });
@@ -1178,54 +1515,138 @@
                 });
 
                 // --- 8. Fade-in on Scroll ---
-                const fadeElems = document.querySelectorAll('.fade-in');
-                const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-                const observer = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, observerOptions);
-                fadeElems.forEach(elem => { observer.observe(elem); });
+                function observeFadeIn(elements) {
+                    if (!elements || elements.length === 0) return; 
+                    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+                    const observer = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('visible');
+                                observer.unobserve(entry.target);
+D                            }
+                        });
+                    }, observerOptions);
+                    elements.forEach(elem => { observer.observe(elem); });
+                }
+                observeFadeIn(document.querySelectorAll('.fade-in'));
 
-                // --- 9. SIÊU CẢI TIẾN: Magic Line Nav ---
+                // --- 9. CẢI TIẾN (v13): Magic Line Nav (Thêm 'focus') ---
                 const mainNav = document.getElementById('main-nav');
                 const magicLine = document.getElementById('nav-magic-line');
-                const navLinks = document.querySelectorAll('.nav-link');
-
-                if (mainNav && magicLine && navLinks.length > 0) {
-                    navLinks.forEach(link => {
-                        link.addEventListener('mouseenter', () => {
+                
+                if (mainNav && magicLine) { 
+                    const navLinks = mainNav.querySelectorAll('.nav-link');
+                    if (navLinks.length > 0) {
+                        function moveMagicLine(link) {
                             magicLine.style.width = `${link.offsetWidth}px`;
                             magicLine.style.left = `${link.offsetLeft}px`;
                             magicLine.style.opacity = '1';
+                        }
+                        navLinks.forEach(link => {
+                            link.addEventListener('mouseenter', () => moveMagicLine(link));
+                            link.addEventListener('focus', () => moveMagicLine(link)); 
+                        });
+
+                        mainNav.addEventListener('mouseleave', () => {
+                            magicLine.style.opacity = '0';
+                        });
+                        mainNav.addEventListener('focusout', () => { 
+                            magicLine.style.opacity = '0';
+                        });
+                    }
+                }
+
+                // --- 10. CẢI TIẾN (v13): Newsletter Form (AJAX) ---
+                const newsletterForm = document.getElementById('newsletter-form');
+                
+                if (newsletterForm) { 
+                    const newsletterMessage = document.getElementById('newsletter-message');
+                    const footerEmail = document.getElementById('footer-email');
+                    
+                    newsletterForm.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        if (newsletterForm.classList.contains('loading') || !newsletterMessage || !footerEmail) return;
+
+                        newsletterForm.classList.add('loading');
+                        newsletterForm.querySelector('button[type="submit"]').disabled = true;
+                        newsletterMessage.className = '';
+                        newsletterMessage.innerText = '';
+
+                        setTimeout(() => {
+                            const email = footerEmail.value;
+                            if (email && email.includes('@')) {
+                                newsletterMessage.innerText = 'Cảm ơn bạn đã đăng ký!';
+                                newsletterMessage.className = 'success';
+                                footerEmail.value = '';
+                            } else {
+                                newsletterMessage.innerText = 'Vui lòng nhập một email hợp lệ.';
+                                newsletterMessage.className = 'error';
+                            }
+                            
+                            newsletterForm.classList.remove('loading');
+                            newsletterForm.querySelector('button[type="submit"]').disabled = false;
+
+                        }, 1500); 
+                    });
+                }
+
+                // --- 11. CẢI TIẾN (v19): Biểu đồ Tri Thức (ICON) ---
+                const graphContainer = document.getElementById('knowledge-graph-container');
+                if (graphContainer) { // Chỉ kiểm tra graphContainer
+                    const graphNodes = [
+                        // Cập nhật: Thêm 'icon' và 'label' để hỗ trợ tiếp cận
+                        { label: 'Kinh tế Vi mô', class: 'node-1', icon: 'fa-magnifying-glass-chart' },
+                        { label: 'Kế toán', class: 'node-2', icon: 'fa-book-open' },
+                        { label: 'Marketing', class: 'node-3', icon: 'fa-bullhorn' },
+                        { label: 'Kinh tế Vĩ mô', class: 'node-4', icon: 'fa-chart-line' },
+                        { label: 'Quốc tế', class: 'node-5', icon: 'fa-globe-americas' },
+                        { label: 'Toán', class: 'node-6', icon: 'fa-calculator' }
+                    ];
+
+                    graphNodes.forEach(nodeData => {
+                        const nodeEl = document.createElement('div'); // Dùng <div> thay vì <a>
+                        nodeEl.className = `knowledge-node ${nodeData.class}`;
+                        nodeEl.setAttribute('role', 'figure');
+                        nodeEl.setAttribute('aria-label', nodeData.label); // Thêm aria-label
+
+                        // Cập nhật: Tạo element <i> cho icon
+                        const iconEl = document.createElement('i');
+                        iconEl.className = `fa-solid ${nodeData.icon}`;
+                        iconEl.setAttribute('aria-hidden', 'true');
+                        
+                        nodeEl.appendChild(iconEl); // Thêm icon vào node
+                        graphContainer.appendChild(nodeEl);
+                    });
+                }
+
+                // --- 12. CẢI TIẾN (v22): Community Hub Tabs ---
+                const communityTablist = document.getElementById('community-tablist');
+                if (communityTablist) {
+                    const tabButtons = communityTablist.querySelectorAll('.community-tab-button');
+                    const tabContents = communityTablist.parentElement.querySelectorAll('.community-tab-content');
+
+                    tabButtons.forEach(button => {
+                        button.addEventListener('click', () => {
+                            const tabName = button.getAttribute('data-tab');
+
+                            // Cập nhật Buttons
+                            tabButtons.forEach(btn => {
+                                btn.classList.remove('active');
+                                btn.setAttribute('aria-selected', 'false');
+                            });
+                            button.classList.add('active');
+                            button.setAttribute('aria-selected', 'true');
+
+                            // Cập nhật Contents
+                            tabContents.forEach(content => {
+                                content.classList.remove('active');
+                                if (content.id === `tab-${tabName}`) {
+                                    content.classList.add('active');
+                                }
+                            });
                         });
                     });
-
-                    mainNav.addEventListener('mouseleave', () => {
-                        magicLine.style.opacity = '0';
-                    });
                 }
-
-                // --- 10. TỐI ƯU HÓA: Gỡ bỏ Hero Parallax ---
-                /*
-                const heroText = document.querySelector('.hero-text');
-                const heroGraphic = document.querySelector('.hero-graphic');
-                const heroSection = document.getElementById('home');
-                if (heroText && heroGraphic && heroSection) {
-                    // ... (code đã bị xóa) ...
-                }
-                */
-
-                // --- 11. TỐI ƯU HÓA: Gỡ bỏ 3D Tilt Effect ---
-                /*
-                const tiltCards = document.querySelectorAll('.interactive-card');
-                tiltCards.forEach(card => {
-                    // ... (code đã bị xóa) ...
-                });
-                */
 
             });
         })();
